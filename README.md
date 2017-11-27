@@ -23,10 +23,10 @@ App that shows/recommends some of my favorite places in an area to visit (defaul
 
 ### Screenshots
 
-<img src="https://user-images.githubusercontent.com/24944725/27041045-7101735c-4f58-11e7-91a9-1becd594222f.png" width="400" height="700")
+<img src="https://user-images.githubusercontent.com/24944725/27041045-7101735c-4f58-11e7-91a9-1becd594222f.png" width="400" height="700" />
 
-<img src="https://user-images.githubusercontent.com/24944725/27041044-70fe00aa-4f58-11e7-9f68-e9d493306459.png" width="400" height="700")
+<img src="https://user-images.githubusercontent.com/24944725/27041044-70fe00aa-4f58-11e7-9f68-e9d493306459.png" width="400" height="700" />
 
-<img src="https://user-images.githubusercontent.com/24944725/27041046-7102d7c4-4f58-11e7-843a-56bbab515907.png" width="400" height="700")
+<img src="https://user-images.githubusercontent.com/24944725/27041046-7102d7c4-4f58-11e7-843a-56bbab515907.png" width="400" height="700"  />
 
-![Favorite Places Gif](https://github.com/cmcgheit/Favorite-Places/blob/master/favoriteplaces.gif)
+![Favorite Places Gif](/Resources/favoriteplaces.gif)
