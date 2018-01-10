@@ -11,9 +11,9 @@ import GoogleMaps
 
 class FavoritePlaces: NSObject {
     
-    let name: String
-    let location: CLLocationCoordinate2D
-    let zoom: Float
+    public let name: String
+    public let location: CLLocationCoordinate2D
+    public let zoom: Float
     
     init(name: String, location: CLLocationCoordinate2D, zoom: Float) {
         self.name = name

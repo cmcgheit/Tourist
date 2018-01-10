@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		27A19EB8D0A464B061184CF1 /* Pods_Favorite_Places.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11C317B4F96CC728CFF511B /* Pods_Favorite_Places.framework */; };
+		6A77A67D200570A400C1838A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77A67C200570A400C1838A /* Extensions.swift */; };
+		6A77A67F2005712500C1838A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77A67E2005712500C1838A /* LocationManager.swift */; };
+		6A77A681200571A900C1838A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77A680200571A900C1838A /* Coordinate.swift */; };
+		6A77A6832005822C00C1838A /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77A6822005822C00C1838A /* DirectionService.swift */; };
 		6A8A76A81FC14AFB00D580D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A76A71FC14AFB00D580D7 /* AppDelegate.swift */; };
 		6A8A76AA1FC14AFB00D580D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A76A91FC14AFB00D580D7 /* ViewController.swift */; };
 		6A8A76AD1FC14AFC00D580D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8A76AB1FC14AFC00D580D7 /* Main.storyboard */; };
@@ -19,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		580BA0FF661AD420AE3B4FE1 /* Pods-Favorite-Places.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favorite-Places.release.xcconfig"; path = "Pods/Target Support Files/Pods-Favorite-Places/Pods-Favorite-Places.release.xcconfig"; sourceTree = "<group>"; };
+		6A77A67C200570A400C1838A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6A77A67E2005712500C1838A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6A77A680200571A900C1838A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		6A77A6822005822C00C1838A /* DirectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
 		6A8A76A41FC14AFB00D580D7 /* Favorite-Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Favorite-Places.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8A76A71FC14AFB00D580D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8A76A91FC14AFB00D580D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +69,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6A77A6842005823200C1838A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6A77A6822005822C00C1838A /* DirectionService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		6A8A769B1FC14AFB00D580D7 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 				6A8A76BB1FC14C5D00D580D7 /* Model */,
 				6A8A76BA1FC14C5300D580D7 /* View */,
 				6A8A76B91FC14C3B00D580D7 /* Controller */,
+				6A77A6842005823200C1838A /* Services */,
 				6A8A76A71FC14AFB00D580D7 /* AppDelegate.swift */,
 				6A8A76AB1FC14AFC00D580D7 /* Main.storyboard */,
 				6A8A76AE1FC14AFC00D580D7 /* Assets.xcassets */,
@@ -114,6 +131,9 @@
 			children = (
 				6A8A76BC1FC14F1600D580D7 /* FavoritePlaces.swift */,
 				6A8A76BE1FC1508400D580D7 /* Constants.swift */,
+				6A77A67C200570A400C1838A /* Extensions.swift */,
+				6A77A67E2005712500C1838A /* LocationManager.swift */,
+				6A77A680200571A900C1838A /* Coordinate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -148,12 +168,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "C McGhee";
 				TargetAttributes = {
 					6A8A76A31FC14AFB00D580D7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 48HD6AZC2E;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -262,7 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A77A681200571A900C1838A /* Coordinate.swift in Sources */,
+				6A77A67D200570A400C1838A /* Extensions.swift in Sources */,
 				6A8A76BD1FC14F1600D580D7 /* FavoritePlaces.swift in Sources */,
+				6A77A6832005822C00C1838A /* DirectionService.swift in Sources */,
+				6A77A67F2005712500C1838A /* LocationManager.swift in Sources */,
 				6A8A76AA1FC14AFB00D580D7 /* ViewController.swift in Sources */,
 				6A8A76A81FC14AFB00D580D7 /* AppDelegate.swift in Sources */,
 				6A8A76BF1FC1508400D580D7 /* Constants.swift in Sources */,
@@ -301,7 +326,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -309,7 +336,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -352,7 +383,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -360,7 +393,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -396,7 +433,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.famdesign.Favorite-Places";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -410,7 +448,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.famdesign.Favorite-Places";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

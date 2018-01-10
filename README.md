@@ -14,10 +14,11 @@ App that shows/recommends some of my favorite places in an area to visit (defaul
 
 ### Things to Update
 
-- [x] Extra page with in-depth information for each place
 - [x] Google Turn by Turn Directions
 - [x] Include [STLLocationRequest](https://github.com/SvenTiigi/STLocationRequest "STLLocationRequest")
-- [ ] StreetView button
+- [x] StreetView button
+- [x] Update to Swift 4 (manually updated ObjectMapper due to GooglePlacesAPI: is Swift 4 version)
+- [ ] Extra page with in-depth information for each place
 - [ ] Include [ARKit-CoreLocation](https://github.com/ProjectDent/ARKit-CoreLocation "ARKit-CoreLocation)
 - [ ] Eventually implement [Expanding Collection](https://github.com/Ramotion/expanding-collection "Expanding-Collection")
 
@@ -29,4 +30,4 @@ App that shows/recommends some of my favorite places in an area to visit (defaul
 
 <img src="https://user-images.githubusercontent.com/24944725/27041046-7102d7c4-4f58-11e7-843a-56bbab515907.png" width="400" height="700"  />
 
-![Favorite Places Gif](/Resources/favoriteplaces.gif)
+![Tourist Gif](/Resources/favoriteplaces.gif)

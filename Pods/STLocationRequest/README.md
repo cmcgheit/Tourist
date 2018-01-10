@@ -1,19 +1,25 @@
 <p align="center">
-<img width=300 src="./Assets/STLocationRequest_AppIcon.jpg" alt="STLocationRequestAppIcon" title="STLocationRequestAppIcon">
+    
+<img width=300 src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest_AppIcon.jpg" alt="STLocationRequestAppIcon" title="STLocationRequestAppIcon">
 </p>
 
 # STLocationRequest
 
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Version](https://img.shields.io/cocoapods/v/STLocationRequest.svg?style=flat)](http://cocoapods.org/pods/STLocationRequest)
+[![Downloads](https://img.shields.io/cocoapods/dt/STLocationRequest.svg?style=flat)](http://cocoapods.org/pods/STLocationRequest)
 [![License](https://img.shields.io/cocoapods/l/STLocationRequest.svg?style=flat)](http://cocoapods.org/pods/STLocationRequest)
 [![Platform](https://img.shields.io/cocoapods/p/STLocationRequest.svg?style=flat)](http://cocoapods.org/pods/STLocationRequest)
+[![Contact](https://img.shields.io/badge/contact-@SvenTiigi-blue.svg?style=flat)](https://twitter.com/SvenTiigi/)
+
+
+
 
 STLocationRequest is a simple and elegant way to request the user location at the very first time written in Swift. It shows a beautiful 3D 360 degree Flyover-MapView over 20 cities or landmarks.
 
 <p align="center">
 <br>
-<img src="./Assets/STLocationRequest.gif" alt="STLocationRequest" title="STLocationRequest">
+<img src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest.gif" alt="STLocationRequest" title="STLocationRequest">
 
 </p>
 
@@ -34,7 +40,7 @@ import STLocationRequest
 class ViewController: UIViewController, STLocationRequestControllerDelegate {
 
     func presentLocationRequestController(){
-        let locationRequestController = STLocationRequestController.getInstance()
+        let locationRequestController = STLocationRequestController()
         locationRequestController.titleText = "We need your location for some awesome features"
         locationRequestController.allowButtonTitle = "Alright"
         locationRequestController.notNowButtonTitle = "Not now"
@@ -52,50 +58,86 @@ class ViewController: UIViewController, STLocationRequestControllerDelegate {
 
 To perfectly match the design to your app, simply playaround with the parameters `mapViewAlpha` and `backgroundColor` to get your very own design.
 
-#### MapView alpha value
+#### mapViewAlpha
 ```swift
 locationRequestController.mapViewAlpha = 0.7
 ```
-> The alpha value for the MapView
+> The alpha value for the MapView. Default value is 1.0
 
-#### BackgroundColor
+#### backgroundColor
 ```swift
-locationRequestController.backgroundColor = UIColor.orange
+locationRequestController.backgroundColor = .orange
 ```
-> The backgroundcolor for the view of the STLocationRequestController
+> The backgroundcolor for the view of the STLocationRequestController. Default value is white
 
 <p align="center">
-<img width=200 src="./Assets/STLocationRequest_Purple.jpg" alt="STLocationRequest" title="STLocationRequest">
-<img width=200 src="./Assets/STLocationRequest_Green.jpg" alt="STLocationRequest" title="STLocationRequest">
-<img width=200 src="./Assets/STLocationRequest_Orange.jpg" alt="STLocationRequest" title="STLocationRequest">
-<img width=200 src="./Assets/STLocationRequest_Red.jpg" alt="STLocationRequest" title="STLocationRequest">
+<img width=200 src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest_Purple.jpg" alt="STLocationRequest" title="STLocationRequest">
+<img width=200 src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest_Green.jpg" alt="STLocationRequest" title="STLocationRequest">
+<img width=200 src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest_Orange.jpg" alt="STLocationRequest" title="STLocationRequest">
+<img width=200 src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/STLocationRequest_Red.jpg" alt="STLocationRequest" title="STLocationRequest">
 </p>
 
-#### TitleText
+#### titleText
 ```swift
 locationRequestController.titleText = "We need your location for some extraordinary features"
 ```
 > The title which will be presented at the top of the STLocationRequestController. Default-Value: "We need your location for some awesome features"
 
-#### TitleFont
+#### titleFont
 ```swift
-locationRequestController.titleFont = UIFont.systemFont(ofSize: 14.0)
+locationRequestController.titleFont = .systemFont(ofSize: 25.0)
 ```
-> The title which will be presented at the top of the STLocationRequestController. Default-Value: UIFont.systemFontOfSize(25.0)
+> The title font. Default-Value: UIFont.systemFontOfSize(25.0)
 
-#### AllowButtonTitle
+#### allowButtonTitle
 ```swift
 locationRequestController.allowButtonTitle = "Yes of course"
 ```
 > The title for the allowButton which will trigger the requestWhenInUseAuthorization() or requestAlwaysAuthorization() Method on CLLocationManager. Default value is "Alright"
 
-#### NotNowButtonTitle
+#### allowButtonFont
+```swift
+locationRequestController.allowButtonFont = .systemFont(ofSize: 21.0)
+```
+> The allow button font. Default-Value: UIFont.systemFontOfSize(21.0)
+
+#### notNowButtonTitle
 ```swift
 locationRequestController.notNowButtonTitle = "Nope"
 ```
 > The title for the notNowButton which will dismiss the STLocationRequestController. Default value is "Not now"
 
-#### Location-Request Authorization-Type
+#### notNowButtonFont
+```swift
+locationRequestController.notNowButtonFont = .systemFont(ofSize: 21.0)
+```
+> The not now button font. Default-Value: UIFont.systemFontOfSize(21.0)
+
+#### mapViewCameraAltitude
+```swift
+locationRequestController.mapViewCameraAltitude = 600
+```
+> The altitude for the mapview camera. Default-Value: 600
+
+#### mapViewCameraPitch
+```swift
+locationRequestController.mapViewCameraPitch = 45
+```
+> The pitch for the mapview camera. Default-Value: 45
+
+#### mapViewCameraHeadingStep
+```swift
+locationRequestController.mapViewCameraHeadingStep = 20
+```
+> The heading step for the mapview camera. Default-Value: 20
+
+#### mapViewCameraRotatinAnimationDuration
+```swift
+locationRequestController.mapViewCameraRotationAnimationDuration = 4
+```
+> The mapview camera rotation animation duration. Default-Value: 4
+
+#### authorizeType
 ```swift
 locationRequestController.authorizeType = .requestWhenInUseAuthorization
 ```
@@ -107,21 +149,33 @@ locationRequestController.isPulseEffectEnabled = true
 ```
 > Defines if the pulse Effect which will displayed under the location symbol should be enabled or disabled. Default Value: true
 
-#### PulseEffectColor
+#### pulseEffectColor
 ```swift
-locationRequestController.pulseEffectColor = UIColor.white
+locationRequestController.pulseEffectColor = .white
 ```
 > The color for the pulse effect behind the location symbol. Default value: white
 
-#### LocationSymbolIcon
+#### pulseEffectRadius
 ```swift
-locationRequestController.locationSymbolIcon = FAType.FALocationArrow
+locationRequestController.pulseEffectRadius = 180
+```
+> The radius of the pulse effect. Default value: 180
+
+#### locationSymbolIcon
+```swift
+locationRequestController.locationSymbolIcon = .FALocationArrow
 ```
 > Set the location symbol icon which will be displayed in the middle of the STLocationRequest-Controller. The default value is FALocationArrow. You can browse at http://fontawesome.io/icons/ or https://github.com/Vaberer/Font-Awesome-Swift for other icons but be aware to use a icon which is in the context of a location request.
 
-#### LocationSymbolColor
+#### locationSymbolSize
 ```swift
-locationRequestController.locationSymbolColor = UIColor.white
+locationRequestController.locationSymbolSize = 150
+```
+> The size of the location symbol which will be presented in the middle of the location request screen. Default value: 150
+
+#### locationSymbolColor
+```swift
+locationRequestController.locationSymbolColor = .white
 ```
 > The color of the location symbol which will be presented in the middle of the location request screen. Default value: white
 
@@ -131,13 +185,13 @@ locationRequestController.isLocationSymbolHidden = false
 ```
 > Defines if the location symbol which will be presented in the middle of the location request screen is hidden. Default value: false
 
-#### TimeTillPlaceSwitchesInSeconds
+#### timeTillPlaceSwitchesInSeconds
 ```swift
 locationRequestController.timeTillPlaceSwitchesInSeconds = 15.0
 ```
 > Set the in the interval for switching the shown places in seconds. Default value is 15 seconds
 
-#### PlacesFilter
+#### placesFilter
 ```swift
 // Only San Francisco Golden Gate Bridge and the Colosseum in Rome will be shown
 locationRequestController.placesFilter = [.sanFranciscoGoldenGateBridge, .romeColosseum]
@@ -167,6 +221,14 @@ func locationRequestControllerDidChange(event: STLocationRequestControllerEvent)
 
 ```
 
+Or you can use the `onChange` closure property to get notified if an `STLocationRequestControllerEvent` occured.
+
+```swift
+locationRequestController.onChange = { (event: STLocationRequestControllerEvent) in
+    // Evaluate event
+}
+```
+
 ## Custom 3D Flyover Places
 An example of adding a custom 3D flyover place to the `STLocationRequestController`.
 
@@ -181,6 +243,7 @@ locationRequestController.addPlace(coordinate: myCoordinate)
 > Please keep in mind to verify that your custom location is available in 3D flyover mode. To verify you can check your place on the Apple Maps App by tapping on the 3D-Button.
 
 If you wish to show only your custom 3D flyover places you can simply set the `placesFilter`.
+
 ```swift
 // Only your custom places will be shown
 locationRequestController.placesFilter = [.customPlaces]
@@ -205,7 +268,7 @@ STLocationRequestControllerAuthorizeType.**requestAlwaysAuthorization**
 This text will be shown in the default iOS location request dialog, which will show up when the user tapped the allow button.
 
 <p align="center">
-<img src="./Assets/iOSLocationRequestDialog.png" alt="iOSRequestDialog" title="iOSRequestDialog" width=300>
+<img src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/iOSLocationRequestDialog.png" alt="iOSRequestDialog" title="iOSRequestDialog" width=300>
 
 </p>
 
@@ -231,13 +294,21 @@ func checkLocationServicePermission() {
     }
 }
 ```
+Or you use the convience static function on `STLocationRequestController` which evaluates if an presenting should be performed.
+
+```swift
+if STLocationRequestController.shouldPresentLocationRequestController() {
+    // Location Services are enabled and authorizationStatus is notDetermined
+    // Ready to present STLocationRequestController
+}
+```
 
 ## iOS Simulator
 
 Please mind that the 3D Flyover-View will only work on a real iOS device (not in the Simulator) with at least iOS 9.0 installed ([Apple Developer API Reference](https://developer.apple.com/reference/mapkit/mkmaptype/1452553-satelliteflyover)). A Screenshot taken from an **iOS Simulator** running `STLocationRequestController`.
 
 <p align="center">
-<img src="./Assets/iOSSimulatorBehavior.jpg" alt="iOSSimulatorBehavior" title="iOSSimulatorBehavior" width=300>
+<img src="https://raw.githubusercontent.com/SvenTiigi/STLocationRequest/master/.assets/iOSSimulatorBehavior.jpg" alt="iOSSimulatorBehavior" title="iOSSimulatorBehavior" width=300>
 
 </p>
 
@@ -255,7 +326,7 @@ An example usage of `STLocationRequestController` in an `Objective-C` project.
 @implementation ViewController
 
 -(void)presentLocationRequestController{
-    STLocationRequestController *locationRequestController = [STLocationRequestController getInstance];
+    STLocationRequestController *locationRequestController = [STLocationRequestController new];
     locationRequestController.titleText = @"We need your location for some awesome features";
     locationRequestController.allowButtonTitle = @"Alright";
     locationRequestController.notNowButtonTitle = @"Not now";
@@ -287,14 +358,6 @@ An example usage of `STLocationRequestController` in an `Objective-C` project.
 
 + [Font-Awesome-Swift](https://github.com/Vaberer/Font-Awesome-Swift)
 + [SwiftPulse](https://github.com/ctews/SwiftPulse)
-
-## Author
-
-<p align="center">
-<img width=200 src="./Assets/svenTiigi.png" alt="Sven Tiigi" title="Sven Tiigi"><br><br>
-Sven Tiigi<br>
-http://sven.tiigi.de
-</p>
 
 ## License
 
