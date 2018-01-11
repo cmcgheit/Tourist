@@ -1,10 +1,12 @@
 # Tourist
 
-App that shows/recommends some of my favorite places in an area to visit (default is Chicago). App features turn by turn directions using CoreLocation. The app also uses [Google's Maps SDK](https://developers.google.com/maps/documentation/ios-sdk/ "Google SDK")
+App that shows/recommends some of my favorite places in an area to visit. App features include Google Maps, Google Turn by Turn directions, as well as STLLocationRequest. The app also uses [Google's Maps SDK](https://developers.google.com/maps/documentation/ios-sdk/ "Google SDK")
 
 **Navigate to the next Tourist recommendation via the next button in the navigation bar**
 
 **Double click on the Google map marker to see a description of each place**
+
+* Icon by [Alexandr Orlov](https://dribbble.com/Orlov) *
 
 ### Features
 - [CoreLocation](https://developer.apple.com/documentation/corelocation)
