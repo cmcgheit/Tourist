@@ -39,6 +39,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
+            manager.startUpdatingLocation()
             permissionsDelegate?.authorizationSucceeded()
         } else {
             permissionsDelegate?.authorizationFailedWithStatus(status)
@@ -58,6 +59,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
         guard let location = locations.last else {
             delegate?.failedWithError(.unableToFindLocation)
             return

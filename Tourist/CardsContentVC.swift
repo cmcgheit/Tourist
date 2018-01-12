@@ -24,24 +24,11 @@ class CardsContentVC: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Button to open Photo Content
     @IBAction func doMagic(_ sender: Any) {
         
         view.backgroundColor = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-        
     }
 }
 
-// MARK: - Photos Table View Functions
-extension CardsContentVC: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 5
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "placesPhotoCell", for: indexPath)
-        let cardH = cell.viewWithTag(2) as! CardHighlight
-        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
-        cardH.shouldPresent(cardContent, from: self, fullscreen: true)
-        return cell
-    }
-}
+

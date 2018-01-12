@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +43,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.53760266304016113" green="0.76109868288040161" blue="0.78716903924942017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placesCell" rowHeight="300" id="TSO-Jn-zyT" customClass="RecPlacesCell" customModule="Tourist" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placesCell" rowHeight="300" id="TSO-Jn-zyT">
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TSO-Jn-zyT" id="Oq6-vI-SFs">
@@ -53,18 +54,10 @@
                                                     <rect key="frame" x="62" y="23" width="250" height="250"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" red="0.47962158919999998" green="0.67873930930000004" blue="0.70053774120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="Iel-M8-hZr"/>
-                                                        <constraint firstAttribute="height" constant="250" id="RPT-WM-dix"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="vnu-IX-LuV" firstAttribute="width" secondItem="Oq6-vI-SFs" secondAttribute="height" multiplier="5:6" id="0Eo-60-Lan"/>
                                                 <constraint firstItem="vnu-IX-LuV" firstAttribute="leading" secondItem="Oq6-vI-SFs" secondAttribute="leadingMargin" constant="55" id="AeM-Gc-esH"/>
                                                 <constraint firstItem="vnu-IX-LuV" firstAttribute="centerX" secondItem="Oq6-vI-SFs" secondAttribute="centerX" id="XQR-q3-aR5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vnu-IX-LuV" secondAttribute="trailing" constant="55" id="bBF-EL-Fi4"/>
@@ -181,7 +174,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SrL-P9-gef">
                                         <rect key="frame" x="1" y="70" width="343" height="213"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Information about Recommended Place: elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Information about Recommended Place: elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -199,10 +192,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-2Z-bJ6" customClass="CardHighlight" customModule="Cards">
+                                                        <view tag="2" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-2Z-bJ6" customClass="CardHighlight" customModule="Cards">
                                                             <rect key="frame" x="77" y="8" width="189" height="184"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-Ke-ZbQ">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-Ke-ZbQ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="189" height="176"/>
                                                                 </imageView>
                                                             </subviews>
@@ -215,6 +208,9 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="J8p-2Z-bJ6" firstAttribute="width" secondItem="U0X-3g-5X5" secondAttribute="height" multiplier="5:6" id="sKa-N6-EfM"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="photosImageView" destination="Bbd-Ke-ZbQ" id="mZC-w6-cF0"/>
@@ -279,53 +275,67 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wz-zc-ObL" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-Ti-8tA">
-                                <rect key="frame" x="250" y="613" width="105" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="816-RE-J6g">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="FMC-UY-fSO"/>
-                                            <constraint firstAttribute="height" constant="44" id="n0s-uc-EdM"/>
-                                        </constraints>
-                                        <state key="normal" image="markericonorange"/>
-                                        <connections>
-                                            <action selector="turnByTurnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cso-HR-8W1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-cR-bjt">
-                                        <rect key="frame" x="59" y="0.0" width="46" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="xbM-2H-QgJ"/>
-                                        </constraints>
-                                        <state key="normal" image="piniconorange"/>
-                                        <connections>
-                                            <action selector="streetViewBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXv-dM-in7"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-Ti-8tA">
+                                        <rect key="frame" x="112.5" y="595" width="150" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="816-RE-J6g">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="8Ty-lu-Ra2"/>
+                                                    <constraint firstAttribute="width" constant="40" id="PWw-ig-p1E"/>
+                                                </constraints>
+                                                <state key="normal" image="mapicon"/>
+                                                <connections>
+                                                    <action selector="turnByTurnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cso-HR-8W1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-cR-bjt">
+                                                <rect key="frame" x="55" y="0.0" width="40" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="06b-DT-7od"/>
+                                                    <constraint firstAttribute="height" constant="44" id="yGc-Ve-9WK"/>
+                                                </constraints>
+                                                <state key="normal" image="locatoricon"/>
+                                                <connections>
+                                                    <action selector="streetViewBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXv-dM-in7"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-II-auf">
+                                                <rect key="frame" x="110" y="0.0" width="40" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="FPl-uR-C9e"/>
+                                                    <constraint firstAttribute="width" constant="40" id="xwL-L6-IN5"/>
+                                                </constraints>
+                                                <state key="normal" image="directionsicons"/>
+                                                <connections>
+                                                    <action selector="turnByTurnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBn-dZ-96Y"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Q9d-Ti-8tA" firstAttribute="centerX" secondItem="9wz-zc-ObL" secondAttribute="centerX" id="hHc-eQ-aDU"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q9d-Ti-8tA" secondAttribute="bottom" constant="8" id="zPV-Zs-DAt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9wz-zc-ObL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4TJ-lh-mg6"/>
-                            <constraint firstAttribute="trailing" secondItem="Q9d-Ti-8tA" secondAttribute="trailing" constant="20" id="Qhh-nc-JR0"/>
-                            <constraint firstItem="Q9d-Ti-8tA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="250" id="VTO-HG-pgZ"/>
                             <constraint firstAttribute="trailing" secondItem="9wz-zc-ObL" secondAttribute="trailing" id="VZD-c7-fs0"/>
                             <constraint firstItem="9wz-zc-ObL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ccp-BR-zjG"/>
                             <constraint firstItem="9wz-zc-ObL" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="cfm-eO-U2O"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Q9d-Ti-8tA" secondAttribute="trailing" constant="4" id="gxo-Ou-90Y"/>
-                            <constraint firstAttribute="bottom" secondItem="Q9d-Ti-8tA" secondAttribute="bottom" constant="10" id="rwC-Mf-asg"/>
-                            <constraint firstItem="Q9d-Ti-8tA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="613" id="zwq-4j-LDF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MNb-zL-Ogb"/>
                     <connections>
+                        <outlet property="getUserLocationBtn" destination="xyR-cR-bjt" id="JAK-Pe-3Vh"/>
                         <outlet property="mapView" destination="9wz-zc-ObL" id="4FU-IH-Fba"/>
                         <outlet property="pinTurnBtn" destination="816-RE-J6g" id="yCq-Rw-XVH"/>
-                        <outlet property="streetViewBtn" destination="xyR-cR-bjt" id="Odq-Vx-bc0"/>
+                        <outlet property="streetViewBtn" destination="1zu-II-auf" id="WNY-no-IgE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -352,11 +362,12 @@
     </scenes>
     <resources>
         <image name="MenuCurve" width="126" height="736"/>
+        <image name="directionsicons" width="108" height="138"/>
         <image name="greymapicon" width="46" height="57"/>
         <image name="greyprofileicon" width="56" height="57"/>
         <image name="greysearchicon" width="52" height="53"/>
-        <image name="markericonorange" width="66" height="73"/>
-        <image name="piniconorange" width="151" height="151"/>
+        <image name="locatoricon" width="108" height="145"/>
+        <image name="mapicon" width="108" height="140"/>
         <image name="touristwhite" width="400" height="300"/>
     </resources>
 </document>

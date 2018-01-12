@@ -51,7 +51,7 @@ class RecommendedPlacesVC: UIViewController {
     // Show navi bar on all pages but MainVC
     // navigationController?.setNavigationBarHidden(false, animated: true)
     
-    // MARK: - Menu Functions
+    // MARK: - Side Menu Functions
     func showMenu() {
         UIView.animate(withDuration: 0.4, animations:  {
             self.menuView.alpha = 1
@@ -91,7 +91,7 @@ class RecommendedPlacesVC: UIViewController {
 }
 
 extension RecommendedPlacesVC: UITableViewDelegate, UITableViewDataSource {
-    
+    // MARK: - Table View Functions to Photo Card
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return 5
     }

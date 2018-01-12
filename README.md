@@ -7,6 +7,7 @@ App that shows/recommends some of my favorite places in an area to visit. App fe
 **Double click on the Google map marker to see a description of each place**
 
 * Icon by [Alexandr Orlov](https://dribbble.com/Orlov) *
+* Tourist Logo by [Chris Larmouth](https://dribbble.com/ChrisLarmouth) *
 
 ### Features
 - [CoreLocation](https://developer.apple.com/documentation/corelocation)

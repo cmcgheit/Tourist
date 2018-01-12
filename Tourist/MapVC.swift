@@ -12,10 +12,12 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 import SwiftyJSON
+import STLocationRequest
 
 class MapVC: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var directionsDetail: UILabel!
     @IBOutlet weak var pinTurnBtn: UIButton!
     @IBOutlet weak var streetViewBtn: UIButton!
     @IBOutlet weak var getUserLocationBtn: UIButton!
@@ -26,100 +28,129 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     // Location Manager properties
     weak var locationManagerDelegate: LocationManagerDelegate?
+    let locationManager = CLLocationManager()
     
     // Favorite Places properties
-    var currentFavoritePlace: FavoritePlaces?
+    var currentRecommendedPlace: RecommendedPlaces?
     var coordinate: CLLocationCoordinate2D?
+    let directionService = DirectionService()
+    var travelMode = TravelModes.driving
     
-    let places = [FavoritePlaces(name:"Favorite Place #2 - Soldier Field", location: CLLocationCoordinate2DMake(41.864833, -87.615442), zoom:16), FavoritePlaces(name:"Favorite Place #3 - Millenium Park", location: CLLocationCoordinate2DMake(41.882633, -87.622580), zoom:18), FavoritePlaces(name:"Favorite Place #4 - Navy Pier", location: CLLocationCoordinate2DMake(41.891692, -87.607388), zoom:18), FavoritePlaces(name:"Favorite Place #5 - DuSable Museum of African-American History", location: CLLocationCoordinate2DMake(41.791802, -87.607100), zoom: 18)]
-    
+    var originLatitude: Double = 10.773434
+    var originLongtitude: Double = 106.683509
+    var originLatitudeDefault:Double = 0
+    var originLongtitudeDefault:Double = 0
+    var destinationLatitude: Double = 10.775459
+    var destinationLongtitude: Double = 106.681476
+    var checkClick: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: Google Map View Properties
-        let camera = GMSCameraPosition.camera(withLatitude: 41.879092, longitude: -87.635904, zoom: 14) // Starting Map Position
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+        // MARK: - STL Location Properties
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
         
-        self.mapView?.isMyLocationEnabled = true
-        self.mapView.settings.myLocationButton = true
-        self.mapView.settings.compassButton = true
-        self.mapView.settings.zoomGestures = true
-        
-        // MARK: - Favorite Places Markers
-        let place_marker = GMSMarker()
-        place_marker.position = CLLocationCoordinate2DMake(41.864833, -87.615442)
-        place_marker.icon = GMSMarker.markerImage(with: .black)
-        place_marker.appearAnimation = GMSMarkerAnimation.pop
-        place_marker.title = "Favorite Place #2 - Soldier Field"
-        place_marker.snippet = "Lakeside home to the Chicago Bears, this 1924 open-air stadium received a modern upgrade in 2003"
-        place_marker.map = mapView
-        
-        let place_marker2 = GMSMarker()
-        place_marker2.position = CLLocationCoordinate2DMake(41.882633, -87.622580)
-        place_marker2.icon = GMSMarker.markerImage(with: .black)
-        place_marker2.appearAnimation = GMSMarkerAnimation.pop
-        place_marker2.title = "Favorite Place #3 - Millenium Park"
-        place_marker2.snippet = "24.5-acre green space with a video display, the reflective \"Bean\" sculpture & an outdoor theater"
-        place_marker2.map = mapView
-        
-        let place_marker3 = GMSMarker()
-        place_marker3.position = CLLocationCoordinate2DMake(41.891692, -87.607388)
-        place_marker3.icon = GMSMarker.markerImage(with: .black)
-        place_marker3.appearAnimation = GMSMarkerAnimation.pop
-        place_marker3.title = "Favorite Place #4 - Navy Pier"
-        place_marker3.snippet = "Former Navy training center draws crowds with carnival rides, restaurants, shops & fireworks"
-        place_marker3.map = mapView
-        
-        let place_marker4 = GMSMarker()
-        place_marker4.position = CLLocationCoordinate2DMake(41.791802, -87.607100)
-        place_marker4.icon = GMSMarker.markerImage(with: .black)
-        place_marker4.appearAnimation = GMSMarkerAnimation.pop
-        place_marker4.title = "Favorite Place #5 - DuSable Museum of African-American History"
-        place_marker4.snippet = "Museum housing exhibits & artifacts that highlight African-American history, culture & art"
-        place_marker4.map = mapView
-        
-        let currentLocation = CLLocationCoordinate2DMake(41.879092, -87.635904)
-        let marker = GMSMarker(position: currentLocation)
-        marker.title = "Favorite Place #1 - Willis Tower"
-        marker.snippet = "110-story skyscraper featuring expansive views of Chicago from its 103rd-story Skydeck"
-        marker.tracksInfoWindowChanges = true
-        marker.icon = GMSMarker.markerImage(with: .black)
-        
-        marker.appearAnimation = GMSMarkerAnimation.pop
-        marker.map = mapView
-        mapView?.selectedMarker = marker
-        
-        navigationItem.title = "Cool Places to Visit"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(MapVC.next as (MapVC) -> () -> ()))
     }
     
-    @objc func next() {
+    // Get Users Location (Turn Location into Address)
+    func getAddress(address:String){
         
-        if currentFavoritePlace == nil {
-            currentFavoritePlace = places.first
-        } else {
-            if let index = places.index(of: currentFavoritePlace!) {
-                currentFavoritePlace = places[index + 1]
-                
+        let key : String = Google_MapsKey
+        let postParameters:[String: Any] = [ "address": address,"key":key]
+        let url : String = "https://maps.googleapis.com/maps/api/geocode/json"
+        
+        Alamofire.request(url, method: .get, parameters: postParameters, encoding: URLEncoding.default, headers: nil).responseJSON {  response in
+            
+            if let receivedResults = response.result.value {
+                let resultParams = JSON(receivedResults)
+                print("ok ok \(resultParams)")
+                print(resultParams["status"])
+                print(resultParams["results"][0]["geometry"]["location"]["lat"].doubleValue)
+                print(resultParams["results"][0]["geometry"]["location"]["lng"].doubleValue)
+                self.destinationLatitude = resultParams["results"][0]["geometry"]["location"]["lat"].doubleValue
+                self.destinationLongtitude = resultParams["results"][0]["geometry"]["location"]["lng"].doubleValue
+                let place_marker = GMSMarker(position: CLLocationCoordinate2D(latitude: self.destinationLatitude, longitude: self.destinationLongtitude))
+                place_marker.icon = UIImage(named:"iconCustomer-20.png")
+                place_marker.map = self.mapView
             }
         }
-        setMapCamera()
+    }
+
+    fileprivate func makeDirections() {
+            self.mapView.clear()
+            let origin: String = "\(originLatitude),\(originLongtitude)"
+            let destination: String = "\(destinationLatitude),\(destinationLongtitude)"
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: destinationLatitude, longitude: destinationLongtitude))
+            marker.icon = UIImage(named:"iconCustomer-20.png")
+            marker.map = self.mapView
+            let marker1 = GMSMarker(position: CLLocationCoordinate2D(latitude: originLatitude, longitude: originLongtitude))
+            marker1.icon = UIImage(named:"bike-20.png")
+            marker1.map = self.mapView
+            self.directionService.getDirections(origin: origin,
+                                                destination: destination,
+                                                travelMode: travelMode) { [weak self] (success) in
+                                                    if success {
+                                                        DispatchQueue.main.async {
+                                                            self?.drawRoute()
+                                                            if let totalDistance = self?.directionService.totalDistance,
+                                                                let totalDuration = self?.directionService.totalDuration {
+                                                                self?.directionsDetail.text = totalDistance + ". " + totalDuration
+                                                                if self?.checkClick == 1{
+                                                                    self?.checkClick = 0
+                                                                    let str = self?.directionsDetail.text
+                                                                    self?.directionsDetail.text = str! + ""
+                                                                }
+                                                                self?.directionsDetail.isHidden = false
+                                                            }
+                                                        }
+                                                    } else {
+                                                        print("Directions error")
+                                                    }
+            }
+        }
+
+    fileprivate func drawRoute() {
+        for step in self.directionService.selectSteps {
+            if step.polyline.points != "" {
+                
+                let path = GMSPath(fromEncodedPath: step.polyline.points)
+                let routePolyline = GMSPolyline(path: path)
+                routePolyline.strokeColor = UIColor.blue
+                routePolyline.strokeWidth = 3.0
+                routePolyline.map = mapView
+            } else {
+                return
+            }
+        }
+    }
+
+    // MARK: - Transit Modes Buttons
+    @IBAction func bicycling(_ sender: Any) {
+        self.travelMode = TravelModes.bicycling
+        self.makeDirections()
+        self.afterDirection()
     }
     
-    private  func setMapCamera() {
-        CATransaction.begin()
-        CATransaction.setValue(2, forKey: kCATransactionAnimationDuration)
-        mapView?.animate(to: GMSCameraPosition.camera(withTarget: currentFavoritePlace!.location, zoom: currentFavoritePlace!.zoom))
-        CATransaction.commit()
-        
-        let marker = GMSMarker(position: currentFavoritePlace!.location)
-        marker.icon = GMSMarker.markerImage(with: .black)
-        marker.title = currentFavoritePlace?.name
-        marker.map = mapView
-        mapView?.selectedMarker = marker
+    @IBAction func driving(_ sender: Any) {
+        self.travelMode = TravelModes.driving
+        self.makeDirections()
+        self.afterDirection()
+    }
+    
+    @IBAction func transit(_ sender: Any) {
+        self.travelMode = TravelModes.transit
+        self.makeDirections()
+        self.afterDirection()
+    }
+    
+    fileprivate func afterDirection() {
+        self.directionService.totalDistanceInMeters = 0
+        self.directionService.totalDurationInSeconds = 0
+        self.directionService.selectLegs.removeAll()
+        self.directionService.selectSteps.removeAll()
+
     }
     
     // MARK: - StreetView  Properties
@@ -143,34 +174,94 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     // MARK: - Get User Location Button Action
     @IBAction func getLocationBtnPressed(_ sender: UIButton) {
-        
+        getAddress(address: (currentRecommendedPlace?.address)!)
+        makeDirections()
     }
     
     // MARK: - STL Location Button Action
     @IBAction func startSTLLocationRequestBtnPressed(_ sender: UIButton) {
-        
+        checkLocationServicePermission()
+        // locationRequestController.addPlace(latitude: 51.960665, longitude: 7.626135)
+    }
+
+// MARK: - STL Request Functions
+func presentLocationRequestController(){
+    let locationRequestController = STLocationRequestController()
+    locationRequestController.titleText = "We need your location for the 3D flyover feature"
+    locationRequestController.allowButtonTitle = "Cool"
+    locationRequestController.notNowButtonTitle = "Not now"
+    locationRequestController.authorizeType = .requestWhenInUseAuthorization
+    locationRequestController.delegate = self
+    locationRequestController.present(onViewController: self)
+}
+
+func checkLocationServicePermission() {
+    if CLLocationManager.locationServicesEnabled() {
+        if CLLocationManager.authorizationStatus() == .denied {
+            // Location Services are denied
+        } else {
+            if CLLocationManager.authorizationStatus() == .notDetermined{
+                // Present the STLocationRequestController
+                presentLocationRequestController()
+            } else {
+                // The user has already allowed your app to use location services. Start updating location
+            }
+        }
+    } else {
+        // Location Services are disabled
+        }
     }
 }
-    
-  
-// MARK: Search Bar Extension (for Google Auto Complete)
-public extension UISearchBar {
-    
-    public func setTextColor(color: UIColor) {
-        let svs = subviews.flatMap { $0.subviews }
-        guard let mapTextField = (svs.filter { $0 is UITextField }).first as? UITextField else { return } // Call from favorite markers?
-        mapTextField.textColor = color
-        }
 
-}
 // MARK: Street View Extension
 extension MapVC: GMSPanoramaViewDelegate {
     
     func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
         print(error.localizedDescription)
+        }
+}
+
+// MARK: - STLLocation Extension
+extension MapVC:  STLocationRequestControllerDelegate {
+    
+    func locationRequestControllerDidChange(_ event: STLocationRequestControllerEvent) {
+        switch event {
+        case .locationRequestAuthorized:
+            print("The user accepted the use of location services")
+            self.locationManager.startUpdatingLocation()
+            break
+        case .locationRequestDenied:
+            print("The user denied the use of location services")
+            break
+        case .notNowButtonTapped:
+            print("The Not now button was tapped")
+            break
+        case .didPresented:
+            print("STLocationRequestController did presented")
+            break
+        case .didDisappear:
+            print("STLocationRequestController did disappear")
+            break
+        }
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension MapVC: CLLocationManagerDelegate {
+    
+    /// CLLocationManagerDelegate DidFailWithError Methods
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error. The Location couldn't be found. \(error)")
+    }
+    
+    /// CLLocationManagerDelegate didUpdateLocations Methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        print("didUpdateLocations UserLocation: \(String(describing: locations.last))")
     }
     
 }
+
 
 
 
