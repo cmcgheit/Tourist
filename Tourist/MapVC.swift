@@ -186,15 +186,26 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     }
 
 // MARK: - STL Request Functions
-func presentLocationRequestController(){
-    let locationRequestController = STLocationRequestController()
-    locationRequestController.titleText = "We need your location for the 3D flyover feature"
-    locationRequestController.allowButtonTitle = "Cool"
-    locationRequestController.notNowButtonTitle = "Not now"
-    locationRequestController.authorizeType = .requestWhenInUseAuthorization
-    locationRequestController.delegate = self
-    locationRequestController.present(onViewController: self)
-}
+    func presentLocationRequestController() {
+        
+        // Initialize STLocationRequestController with Configuration
+        let locationRequestController = STLocationRequestController { config in
+            // Perform configuration
+            config.title.text = "We need your location for some cool flyover features"
+            config.allowButton.title = "Cool"
+            config.notNowButton.title = "Not now"
+            config.mapView.alpha = 0.9
+            config.backgroundColor = UIColor.lightGray
+            config.authorizeType = .requestWhenInUseAuthorization
+        }
+        
+        // Listen on STLocationRequestController.Event's
+        locationRequestController.onEvent = self.onEvent
+        
+        // Present STLocationRequestController
+        locationRequestController.present(onViewController: self)
+        
+    }
 
 func checkLocationServicePermission() {
     if CLLocationManager.locationServicesEnabled() {
@@ -223,26 +234,22 @@ extension MapVC: GMSPanoramaViewDelegate {
 }
 
 // MARK: - STLLocation Extension
-extension MapVC:  STLocationRequestControllerDelegate {
+extension MapVC {
     
-    func locationRequestControllerDidChange(_ event: STLocationRequestControllerEvent) {
+    private func onEvent(_ event: STLocationRequestController.Event) {
+        print("Retrieved STLocationRequestController.Event: \(event)")
         switch event {
         case .locationRequestAuthorized:
             print("The user accepted the use of location services")
             self.locationManager.startUpdatingLocation()
-            break
         case .locationRequestDenied:
             print("The user denied the use of location services")
-            break
         case .notNowButtonTapped:
             print("The Not now button was tapped")
-            break
         case .didPresented:
             print("STLocationRequestController did presented")
-            break
         case .didDisappear:
             print("STLocationRequestController did disappear")
-            break
         }
     }
 }

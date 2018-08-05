@@ -29,3 +29,11 @@ protocol LocationManagerDelegate: class {
 protocol JSONDecodable {
     init?(json: [String: Any])
 }
+
+#if swift(>=4.1)
+#else
+/// Implicitly Unwrapped Optional Object of Raw Representable type
+public func <- <T: RawRepresentable>(left: inout T!, right: Map) {
+left <- (right, EnumTransform())
+}
+#endif

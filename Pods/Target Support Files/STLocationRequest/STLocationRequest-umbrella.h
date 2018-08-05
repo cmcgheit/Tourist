@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "STLocationRequest.h"
 
 FOUNDATION_EXPORT double STLocationRequestVersionNumber;
 FOUNDATION_EXPORT const unsigned char STLocationRequestVersionString[];
