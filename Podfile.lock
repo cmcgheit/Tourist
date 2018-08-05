@@ -29,6 +29,19 @@ DEPENDENCIES:
   - STLocationRequest
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Cards
+    - Font-Awesome-Swift
+    - GoogleMaps
+    - GooglePlaces
+    - GooglePlacesAPI
+    - ObjectMapper
+    - Player
+    - STLocationRequest
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Cards: c5023eb5dfa9d81478535fa255a8060f4e0737e3
@@ -43,4 +56,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4cbb7f5c71d6276d8ca42d594e75f35e65eff96e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.2

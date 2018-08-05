@@ -22,6 +22,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var streetViewBtn: UIButton!
     @IBOutlet weak var getUserLocationBtn: UIButton!
     @IBOutlet weak var stlLocationBtn: UIButton!
+    @IBOutlet weak var headerView: UIView!
     
     var marker = GMSMarker()
     var rectangle = GMSPolyline()

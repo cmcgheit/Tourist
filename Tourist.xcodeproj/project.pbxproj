@@ -31,6 +31,7 @@
 		6A8A76B21FC14AFC00D580D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8A76B01FC14AFC00D580D7 /* LaunchScreen.storyboard */; };
 		6A8A76BD1FC14F1600D580D7 /* RecommendedPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A76BC1FC14F1600D580D7 /* RecommendedPlaces.swift */; };
 		6A8A76BF1FC1508400D580D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A76BE1FC1508400D580D7 /* Constants.swift */; };
+		6A986C1E20E04D4D00B7FF92 /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */; };
 		7B5B620ACF5728836AD7141A /* Pods_Tourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6044F44E1A5E07229CBF9F43 /* Pods_Tourist.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		6A8A76B31FC14AFC00D580D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A8A76BC1FC14F1600D580D7 /* RecommendedPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedPlaces.swift; sourceTree = "<group>"; };
 		6A8A76BE1FC1508400D580D7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		C6C0B9D9FCD9DF511383F102 /* Pods-Tourist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tourist/Pods-Tourist.debug.xcconfig"; sourceTree = "<group>"; };
 		E9815A4547B22B376AB9804C /* Pods-Tourist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tourist/Pods-Tourist.release.xcconfig"; sourceTree = "<group>"; };
 		F11C317B4F96CC728CFF511B /* Pods_Favorite_Places.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Favorite_Places.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 		6A8A76BA1FC14C5300D580D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */,
 				6A77A68D2007171200C1838A /* PlacesPhotoCell.swift */,
 			);
 			name = View;
@@ -304,7 +307,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -351,6 +355,7 @@
 				6A77A6A12007C3DF00C1838A /* Polyline.swift in Sources */,
 				6A77A6962007C1FC00C1838A /* Route.swift in Sources */,
 				6A77A68620067A9C00C1838A /* RecommendedPlacesVC.swift in Sources */,
+				6A986C1E20E04D4D00B7FF92 /* CustomMarkerView.swift in Sources */,
 				6A77A67F2005712500C1838A /* LocationManager.swift in Sources */,
 				6A77A6922007C1A800C1838A /* GeocodedWaypoint.swift in Sources */,
 				6A77A68C2007146900C1838A /* CardsContentVC.swift in Sources */,
