@@ -1,6 +1,5 @@
 //
 //  CustomMarkerView.swift
-//  googlMapTutuorial2
 //
 //  Created by Muskan on 12/17/17.
 //  Copyright © 2017 akhil. All rights reserved.

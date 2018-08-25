@@ -189,7 +189,7 @@ func getAttributedStringForRuntimeReplace(_ text: NSString, ofSize size: CGFloat
 func GetIconIndexWithSelectedIcon(_ icon: String) -> String {
     let text = icon as NSString
     var iconIndex: String = ""
- 
+    
     for substring in ((text as String).split{$0 == " "}.map(String.init)) {
         var splitArr = ["", ""]
         splitArr = substring.split{$0 == ":"}.map(String.init)
@@ -247,6 +247,32 @@ func GetFontTypeWithSelectedIcon(_ icon: String) -> Fonts {
         }
     }
     
-    
     return fontType
+}
+
+// MARK: - Extension to get current vc, call with currentViewController()
+extension UIViewController {
+    func currentViewController(_ viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        guard let viewController = viewController else { return nil }
+        
+        if let viewController = viewController as? UINavigationController {
+            if let viewController = viewController.visibleViewController {
+                return currentViewController(viewController)
+            } else {
+                return currentViewController(viewController.topViewController)
+            }
+        } else if let viewController = viewController as? UITabBarController {
+            if let viewControllers = viewController.viewControllers, viewControllers.count > 5, viewController.selectedIndex >= 4 {
+                return currentViewController(viewController.moreNavigationController)
+            } else {
+                return currentViewController(viewController.selectedViewController)
+            }
+        } else if let viewController = viewController.presentedViewController {
+            return viewController
+        } else if viewController.childViewControllers.count > 0 {
+            return viewController.childViewControllers[0]
+        } else {
+            return viewController
+        }
+    }
 }

@@ -3,7 +3,6 @@
 import UIKit
 import Cards
 
-
 class RecommendedPlacesVC: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
