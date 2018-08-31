@@ -12,7 +12,6 @@ target 'Tourist' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'ObjectMapper'
-  pod 'STLocationRequest'
   pod 'Cards'
 
 #  post_install do |installer|

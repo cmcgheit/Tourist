@@ -147,7 +147,7 @@ extension SearchVC: CLLocationManagerDelegate {
     
     // CLLocationManagerDelegate didUpdateLocations Methods
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        manager.stopUpdatingLocation()
         print("didUpdateLocations UserLocation: \(String(describing: locations.last))")
     }
     

@@ -12,7 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 import SwiftyJSON
-import STLocationRequest
+// import STLocationRequest
 
 class MapVC: UIViewController, GMSMapViewDelegate {
     
@@ -73,7 +73,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
                 self.destinationLatitude = resultParams["results"][0]["geometry"]["location"]["lat"].doubleValue
                 self.destinationLongtitude = resultParams["results"][0]["geometry"]["location"]["lng"].doubleValue
                 let place_marker = GMSMarker(position: CLLocationCoordinate2D(latitude: self.destinationLatitude, longitude: self.destinationLongtitude))
-                place_marker.icon = UIImage(named:"iconCustomer-20.png")
+                place_marker.icon = UIImage(named:"")
                 place_marker.map = self.mapView
             }
         }
@@ -188,22 +188,22 @@ class MapVC: UIViewController, GMSMapViewDelegate {
 // MARK: - STL Request Functions
     func presentLocationRequestController() {
         
-        // Initialize STLocationRequestController with Configuration
-        let locationRequestController = STLocationRequestController { config in
-            // Perform configuration
-            config.title.text = "We need your location for some cool flyover features"
-            config.allowButton.title = "Cool"
-            config.notNowButton.title = "Not now"
-            config.mapView.alpha = 0.9
-            config.backgroundColor = UIColor.lightGray
-            config.authorizeType = .requestWhenInUseAuthorization
-        }
-        
-        // Listen on STLocationRequestController.Event's
-        locationRequestController.onEvent = self.onEvent
-        
-        // Present STLocationRequestController
-        locationRequestController.present(onViewController: self)
+//        // Initialize STLocationRequestController with Configuration
+//        let locationRequestController = STLocationRequestController { config in
+//            // Perform configuration
+//            config.title.text = "We need your location for some cool flyover features"
+//            config.allowButton.title = "Cool"
+//            config.notNowButton.title = "Not now"
+//            config.mapView.alpha = 0.9
+//            config.backgroundColor = UIColor.lightGray
+//            config.authorizeType = .requestWhenInUseAuthorization
+//        }
+//        
+//        // Listen on STLocationRequestController.Event's
+//        locationRequestController.onEvent = self.onEvent
+//        
+//        // Present STLocationRequestController
+//        locationRequestController.present(onViewController: self)
         
     }
 
@@ -234,25 +234,25 @@ extension MapVC: GMSPanoramaViewDelegate {
 }
 
 // MARK: - STLLocation Extension
-extension MapVC {
-    
-    private func onEvent(_ event: STLocationRequestController.Event) {
-        print("Retrieved STLocationRequestController.Event: \(event)")
-        switch event {
-        case .locationRequestAuthorized:
-            print("The user accepted the use of location services")
-            self.locationManager.startUpdatingLocation()
-        case .locationRequestDenied:
-            print("The user denied the use of location services")
-        case .notNowButtonTapped:
-            print("The Not now button was tapped")
-        case .didPresented:
-            print("STLocationRequestController did presented")
-        case .didDisappear:
-            print("STLocationRequestController did disappear")
-        }
-    }
-}
+//extension MapVC {
+//
+//    private func onEvent(_ event: STLocationRequestController.Event) {
+//        print("Retrieved STLocationRequestController.Event: \(event)")
+//        switch event {
+//        case .locationRequestAuthorized:
+//            print("The user accepted the use of location services")
+//            self.locationManager.startUpdatingLocation()
+//        case .locationRequestDenied:
+//            print("The user denied the use of location services")
+//        case .notNowButtonTapped:
+//            print("The Not now button was tapped")
+//        case .didPresented:
+//            print("STLocationRequestController did presented")
+//        case .didDisappear:
+//            print("STLocationRequestController did disappear")
+//        }
+//    }
+//}
 
 // MARK: - CLLocationManagerDelegate
 extension MapVC: CLLocationManagerDelegate {
