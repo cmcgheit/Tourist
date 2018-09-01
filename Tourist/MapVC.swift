@@ -257,12 +257,12 @@ extension MapVC: GMSPanoramaViewDelegate {
 // MARK: - CLLocationManagerDelegate
 extension MapVC: CLLocationManagerDelegate {
     
-    /// CLLocationManagerDelegate DidFailWithError Methods
+    // CLLocationManagerDelegate DidFailWithError Methods
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error. The Location couldn't be found. \(error)")
     }
     
-    /// CLLocationManagerDelegate didUpdateLocations Methods
+    // CLLocationManagerDelegate didUpdateLocations Methods
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         print("didUpdateLocations UserLocation: \(String(describing: locations.last))")

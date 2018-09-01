@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let animationSplashVC = storyboard.instantiateViewController(withIdentifier: "AnimationSplashVC")
+        self.window?.rootViewController = animationSplashVC
+        self.window?.makeKeyAndVisible()
+        
         // MARK: Google Keys
         GMSServices.provideAPIKey("Google_MapsKey")
         GMSPlacesClient.provideAPIKey("Google_MapsKey")

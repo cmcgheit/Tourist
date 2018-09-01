@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T3e-xl-u3r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BEw-TG-F8n">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,6 @@
         <!--Recommended PlacesVC-->
         <scene sceneID="Ob1-a4-59G">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="65U-Eg-Mz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="RecommendedPlacesVC" id="e5s-Yu-u3h" customClass="RecommendedPlacesVC" customModule="Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UYX-Ay-mfs"/>
@@ -24,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqn-VH-7Vx" customClass="CardHighlight" customModule="Cards">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqn-VH-7Vx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -56,25 +55,25 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eld-dL-Jvg">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.53760266304016113" green="0.76109868288040161" blue="0.78716903924942017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placesCell" rowHeight="300" id="TSO-Jn-zyT">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placesCell" rowHeight="400" id="TSO-Jn-zyT">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TSO-Jn-zyT" id="Oq6-vI-SFs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnu-IX-LuV" customClass="CardHighlight" customModule="Cards">
-                                                    <rect key="frame" x="70" y="26" width="235" height="235"/>
+                                                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnu-IX-LuV">
+                                                    <rect key="frame" x="20" y="24" width="334" height="350"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" red="0.47962158919999998" green="0.67873930930000004" blue="0.70053774120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.59999999999999998" green="0.84705882352941175" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -110,9 +109,6 @@
                                                 <state key="normal" image="greysearchicon">
                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="tGf-dj-DbC" kind="show" id="fOO-1V-D9O"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="tintColor" red="0.53760266304016113" green="0.76109868288040161" blue="0.78716903924942017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,13 +157,13 @@
                         <outlet property="searchBtn" destination="Wm0-8R-j37" id="XP3-Cs-tst"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="65U-Eg-Mz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="242"/>
+            <point key="canvasLocation" x="1390" y="292"/>
         </scene>
         <!--Cards ContentVC-->
         <scene sceneID="HCg-7k-C0w">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ybj-ey-2i7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CardsContentVC" id="Jkm-Li-Mmw" customClass="CardsContentVC" customModule="Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5gV-xg-cDA"/>
@@ -177,9 +173,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpT-9y-0ne" customClass="CardHighlight" customModule="Cards">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpT-9y-0ne">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OWN-Oh-9ru">
                                 <rect key="frame" x="15" y="45" width="345" height="597"/>
@@ -190,7 +186,7 @@
                                             <constraint firstAttribute="height" constant="70" id="ImP-lG-EsE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SrL-P9-gef">
@@ -202,23 +198,23 @@
                                     </textView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DK7-rc-BHJ">
                                         <rect key="frame" x="1" y="283" width="343" height="314"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="314" id="baF-IK-VHW"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placesPhotosCell" rowHeight="200" id="0Zv-kc-mjD" customClass="PlacesPhotoCell" customModule="Tourist" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="343" height="200"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placesPhotosCell" rowHeight="229" id="0Zv-kc-mjD" customClass="PlacesPhotoCell" customModule="Tourist" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="229"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Zv-kc-mjD" id="U0X-3g-5X5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="228.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-2Z-bJ6" customClass="CardHighlight" customModule="Cards">
-                                                            <rect key="frame" x="69" y="-4" width="205" height="208"/>
+                                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-2Z-bJ6">
+                                                            <rect key="frame" x="69" y="-4" width="205" height="236.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-Ke-ZbQ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="208"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="236.5"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,8 +267,9 @@
                         <outlet property="placsTextView" destination="SrL-P9-gef" id="b8g-lz-vyk"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ybj-ey-2i7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="242"/>
+            <point key="canvasLocation" x="2068" y="292"/>
         </scene>
         <!--SearchVC-->
         <scene sceneID="LpM-ie-a8d">
@@ -287,7 +284,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-RB-lVV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touristwhite" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-Th-HnN">
                                         <rect key="frame" x="67" y="5" width="240" height="95"/>
@@ -304,6 +301,7 @@
                                 <constraints>
                                     <constraint firstItem="zIa-Th-HnN" firstAttribute="top" secondItem="Pnj-RB-lVV" secondAttribute="top" constant="5" id="DQB-8j-560"/>
                                     <constraint firstItem="zIa-Th-HnN" firstAttribute="centerX" secondItem="Pnj-RB-lVV" secondAttribute="centerX" id="RRb-H2-8Co"/>
+                                    <constraint firstAttribute="height" constant="100" id="wp3-Mq-GVs"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFU-Z6-Wwh">
@@ -317,7 +315,7 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jut-L2-QZE" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="131" width="375" height="536"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93922871350000003" green="0.68552207949999999" blue="0.31150400639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
@@ -334,22 +332,34 @@
                             <constraint firstItem="iFU-Z6-Wwh" firstAttribute="top" secondItem="SOm-V7-Uke" secondAttribute="top" constant="101" id="Mkd-5A-gUa"/>
                             <constraint firstItem="QHD-4f-93Y" firstAttribute="top" secondItem="jut-L2-QZE" secondAttribute="bottom" id="PBT-1j-0M6"/>
                             <constraint firstItem="jut-L2-QZE" firstAttribute="leading" secondItem="SOm-V7-Uke" secondAttribute="leading" id="fNe-YR-Njc"/>
-                            <constraint firstItem="iFU-Z6-Wwh" firstAttribute="top" secondItem="Pnj-RB-lVV" secondAttribute="bottom" id="g6E-kV-wsb"/>
                             <constraint firstAttribute="trailing" secondItem="jut-L2-QZE" secondAttribute="trailing" id="l3m-sD-8xV"/>
                             <constraint firstAttribute="trailing" secondItem="iFU-Z6-Wwh" secondAttribute="trailing" id="laO-3X-d3r"/>
                             <constraint firstAttribute="trailing" secondItem="Pnj-RB-lVV" secondAttribute="trailing" id="m4L-QK-ObF"/>
                             <constraint firstItem="Pnj-RB-lVV" firstAttribute="leading" secondItem="SOm-V7-Uke" secondAttribute="leading" id="obJ-a6-ewP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="iFU-Z6-Wwh"/>
+                                <exclude reference="jut-L2-QZE"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="IK5-AN-Lkb"/>
+                                <exclude reference="Mkd-5A-gUa"/>
+                                <exclude reference="laO-3X-d3r"/>
+                                <exclude reference="7F4-6s-9ml"/>
+                                <exclude reference="fNe-YR-Njc"/>
+                                <exclude reference="l3m-sD-8xV"/>
+                                <exclude reference="PBT-1j-0M6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="headerView" destination="Pnj-RB-lVV" id="f0t-hz-fG2"/>
-                        <outlet property="mapView" destination="jut-L2-QZE" id="7rD-fd-33R"/>
-                        <outlet property="searchTextFld" destination="iFU-Z6-Wwh" id="WmO-UN-DZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXz-wG-a4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="-468"/>
+            <point key="canvasLocation" x="769" y="-448"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="tne-QT-ifu">
@@ -391,13 +401,14 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="30V-zL-MN4"/>
                                             <constraint firstAttribute="width" constant="150" id="kEO-6g-gY1"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
@@ -453,12 +464,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="242"/>
+            <point key="canvasLocation" x="769" y="292"/>
+        </scene>
+        <!--Animation SplashVC-->
+        <scene sceneID="7FG-5B-DHY">
+            <objects>
+                <viewController storyboardIdentifier="AnimationSplashVC" id="BEw-TG-F8n" customClass="AnimationSplashVC" customModule="Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sb5-ln-0Ke"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eai-7e-ytP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oQw-I3-c0F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touristwhite" translatesAutoresizingMaskIntoConstraints="NO" id="UYp-tb-tYc">
+                                <rect key="frame" x="-12.5" y="183" width="400" height="300"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.84705882349999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UYp-tb-tYc" firstAttribute="centerY" secondItem="oQw-I3-c0F" secondAttribute="centerY" id="gyC-jP-X0O"/>
+                            <constraint firstItem="UYp-tb-tYc" firstAttribute="centerX" secondItem="oQw-I3-c0F" secondAttribute="centerX" id="nY0-Uo-5EW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImage" destination="UYp-tb-tYc" id="IYi-Wm-aYu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghE-QV-mcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-586.39999999999998" y="291.90404797601201"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OQo-OA-JXB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T3e-xl-u3r" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T3e-xl-u3r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6cJ-jn-qse">
                         <autoresizingMask key="autoresizingMask"/>
@@ -470,7 +511,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mg3-G5-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-113" y="242"/>
+            <point key="canvasLocation" x="102" y="292"/>
         </scene>
     </scenes>
     <resources>

@@ -13,6 +13,8 @@ target 'Tourist' do
   pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'Cards'
+  pod 'Pulley'
+#  pod 'STLocationRequest'
 
 #  post_install do |installer|
 #      installer.pods_project.targets.each do |target|

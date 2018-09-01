@@ -32,6 +32,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Use your location to get turn by turn directions</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Use your location to recommend places around you</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Use your location to recommend places around you</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
