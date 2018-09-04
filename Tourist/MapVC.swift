@@ -1,6 +1,6 @@
 //
 //  MapVC.swift
-//  favoritePlaces
+//  Tourist
 //
 //  Created by C McGhee on 4/3/17.
 //  Copyright © 2017 C McGhee. All rights reserved.
@@ -12,17 +12,28 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 import SwiftyJSON
+import Pulley
 // import STLocationRequest
 
 class MapVC: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var directionsDetail: UILabel!
-    @IBOutlet weak var pinTurnBtn: UIButton!
+    
+    @IBOutlet var controlsContainer: UIView!
+    @IBOutlet var temperatureLabel: UILabel!
+    
+    @IBOutlet var temperatureLabelBottomConstraint: NSLayoutConstraint!
+    fileprivate let temperatureLabelBottomDistance: CGFloat = 8.0
+
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var streetViewBtn: UIButton!
+    @IBOutlet weak var pinTurnBtn: UIButton!
     @IBOutlet weak var getUserLocationBtn: UIButton!
+    
+    @IBOutlet weak var directionsDetail: UILabel!
     @IBOutlet weak var stlLocationBtn: UIButton!
-    @IBOutlet weak var headerView: UIView!
+    
     
     var marker = GMSMarker()
     var rectangle = GMSPolyline()
@@ -39,22 +50,84 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     var originLatitude: Double = 10.773434
     var originLongtitude: Double = 106.683509
-    var originLatitudeDefault:Double = 0
-    var originLongtitudeDefault:Double = 0
+    var originLatitudeDefault: Double = 0
+    var originLongtitudeDefault: Double = 0
     var destinationLatitude: Double = 10.775459
     var destinationLongtitude: Double = 106.681476
     var checkClick: Int = 0
     
+    var isStatusBarHidden = false
+    
+    var location: CLLocationCoordinate2D? {
+        didSet {
+            if let location = location {
+                // mapView.zoomIn(coordinate: location)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        controlsContainer.layer.cornerRadius = 10.0
+        temperatureLabel.layer.cornerRadius = 7.0
+        
+        mapView.delegate = self
+        self.view.bringSubview(toFront: controlsContainer)
+        self.view.bringSubview(toFront: temperatureLabel)
+        
         // MARK: - STL Location Properties
-        self.locationManager.delegate = self
+        locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         
+        // Button Tint
+        searchButton.tintColor = UIColor.darkGray
+        directionsBtn.tintColor = UIColor.darkGray
+        pinTurnBtn.tintColor = UIColor.darkGray
+        streetViewBtn.tintColor = UIColor.darkGray
+        getUserLocationBtn.tintColor = UIColor.darkGray
+        // stlLocationBtn.tintColor = UIColor.darkGray
+        
+        // Hide Status Bar when view loads
+        hideStatusBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showStatusBar()
+        
+        // Pulley layout for iPhone/iPad
+        self.pulleyViewController?.displayMode = .automatic
+    }
+    
+    // MARK: - Status Bar Animation Functions
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
+    func hideStatusBar() {
+        isStatusBarHidden = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
+    
+    func showStatusBar() {
+        isStatusBarHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
+    
+   
     // Get Users Location (Turn Location into Address)
     func getAddress(address:String){
         
@@ -154,13 +227,18 @@ class MapVC: UIViewController, GMSMapViewDelegate {
 
     }
     
-    // MARK: - StreetView  Properties
+    // MARK: - StreetView Properties
     func loadStreetView() {
         let panoView = GMSPanoramaView(frame: .zero)
         self.view = panoView
         
         panoView.moveNearCoordinate(coordinate!) //Move toward places coordinate
         panoView.animate(to: GMSPanoramaCamera(heading: 90, pitch: 0, zoom: 1), animationDuration: 2)
+    }
+
+    @IBAction func searchTransition(sender: AnyObject) {
+        let searchViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchDrawerVC")
+        self.pulleyViewController?.setPrimaryContentViewController(controller: searchViewVC, animated: true)
     }
     
     // MARK: - Turn by Turn Button Action
@@ -183,6 +261,15 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     @IBAction func startSTLLocationRequestBtnPressed(_ sender: UIButton) {
         checkLocationServicePermission()
         // locationRequestController.addPlace(latitude: 51.960665, longitude: 7.626135)
+    }
+    
+    // MARK: - Fade Animation Transition
+    func fadeAnimation() {
+        UIViewPropertyAnimator(duration: 0.5, curve: .easeOut, animations: {
+            self.mapView.alpha = 0.0
+            self.controlsContainer.alpha = 0.0
+            self.temperatureLabel.alpha = 0.0
+        }).startAnimation()
     }
 
 // MARK: - STL Request Functions
@@ -231,6 +318,32 @@ extension MapVC: GMSPanoramaViewDelegate {
     func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
         print(error.localizedDescription)
         }
+}
+
+// MARK: - Pulley Drawer
+extension MapVC: PulleyPrimaryContentControllerDelegate {
+    
+    func makeUIAdjustmentsForFullscreen(progress: CGFloat, bottomSafeArea: CGFloat) {
+        guard let drawer = self.pulleyViewController, drawer.currentDisplayMode == .drawer else {
+            controlsContainer.alpha = 1.0
+            return
+        }
+        
+        controlsContainer.alpha = 1.0 - progress
+    }
+    
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController, distance: CGFloat, bottomSafeArea: CGFloat) {
+        guard drawer.currentDisplayMode == .drawer else {
+            temperatureLabelBottomConstraint.constant = temperatureLabelBottomDistance
+            return
+        }
+        
+        if distance <= 268.0 + bottomSafeArea {
+            temperatureLabelBottomConstraint.constant = distance + temperatureLabelBottomDistance
+        } else {
+            temperatureLabelBottomConstraint.constant = 268.0 + temperatureLabelBottomDistance
+        }
+    }
 }
 
 // MARK: - STLLocation Extension

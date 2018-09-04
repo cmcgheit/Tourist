@@ -14,6 +14,7 @@ PODS:
     - ObjectMapper (~> 2)
   - ObjectMapper (2.2.9)
   - Player (0.8.4)
+  - Pulley (2.5.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - GooglePlaces
   - GooglePlacesAPI
   - ObjectMapper
+  - Pulley
   - SwiftyJSON
 
 SPEC REPOS:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - GooglePlacesAPI
     - ObjectMapper
     - Player
+    - Pulley
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -44,8 +47,9 @@ SPEC CHECKSUMS:
   GooglePlacesAPI: 3baf1c78cf94cc97fc5677c613f55d00b37a7d3c
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
+  Pulley: cd351f605ec2e7412c69d39313c49f99dd1f97c1
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 03511ff3649353abc8dc77d3f93a875898df4722
+PODFILE CHECKSUM: 7e8bc250ed501571e3a4d3ca6ce763e0390b7800
 
 COCOAPODS: 1.5.2

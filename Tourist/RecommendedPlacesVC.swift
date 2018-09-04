@@ -100,6 +100,7 @@ extension RecommendedPlacesVC: UITableViewDelegate, UITableViewDataSource {
         let cardH = cell.viewWithTag(1) as! CardHighlight
         let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         cardH.shouldPresent(cardContent, from: self, fullscreen: true)
+        // cell.configurePhotoCell()
         return cell
     }
     

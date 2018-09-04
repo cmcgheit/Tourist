@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Hides status bar
+        UIApplication.shared.isStatusBarHidden = true
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let animationSplashVC = storyboard.instantiateViewController(withIdentifier: "AnimationSplashVC")
@@ -24,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // MARK: Google Keys
-        GMSServices.provideAPIKey("Google_MapsKey")
-        GMSPlacesClient.provideAPIKey("Google_MapsKey")
+        GMSServices.provideAPIKey(Google_MapsKey)
+        GMSPlacesClient.provideAPIKey(Google_MapsKey)
         return true
     }
 
