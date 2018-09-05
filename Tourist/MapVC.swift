@@ -24,7 +24,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet var temperatureLabelBottomConstraint: NSLayoutConstraint!
     fileprivate let temperatureLabelBottomDistance: CGFloat = 8.0
-
+    
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var streetViewBtn: UIButton!
@@ -33,7 +33,6 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var directionsDetail: UILabel!
     @IBOutlet weak var stlLocationBtn: UIButton!
-    
     
     var marker = GMSMarker()
     var rectangle = GMSPolyline()
@@ -58,14 +57,6 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     
     var isStatusBarHidden = false
     
-    var location: CLLocationCoordinate2D? {
-        didSet {
-            if let location = location {
-                // mapView.zoomIn(coordinate: location)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,10 +67,16 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         self.view.bringSubview(toFront: controlsContainer)
         self.view.bringSubview(toFront: temperatureLabel)
         
-        // MARK: - STL Location Properties
+        // MARK: - CoreLocation/User Location
         locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest // location updates
+        self.locationManager.distanceFilter = kCLDistanceFilterNone //accuray of location/updates
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        zoomToUserLocation()
+        }
         
         // Button Tint
         searchButton.tintColor = UIColor.darkGray
@@ -127,13 +124,22 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         })
     }
     
-   
-    // Get Users Location (Turn Location into Address)
+    // MARK: - Zoom Function
+    func zoomToUserLocation() {
+        checkLocationServicePermission()
+        let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
+        // print("locations = \(locValue.latitude) \(locValue.longitude)") // actual coordindate
+        mapView.animate(toLocation: CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude))
+        mapView.setMinZoom(10, maxZoom: 20)
+        
+    }
+    
+    // MARK: - Get Users Location Function (Turn Location into Address)
     func getAddress(address:String){
         
-        let key : String = Google_MapsKey
-        let postParameters:[String: Any] = [ "address": address,"key":key]
-        let url : String = "https://maps.googleapis.com/maps/api/geocode/json"
+        let key: String = Google_MapsKey
+        let postParameters: [String: Any] = [ "address": address,"key":key]
+        let url: String = "https://maps.googleapis.com/maps/api/geocode/json"
         
         Alamofire.request(url, method: .get, parameters: postParameters, encoding: URLEncoding.default, headers: nil).responseJSON {  response in
             
@@ -151,40 +157,40 @@ class MapVC: UIViewController, GMSMapViewDelegate {
             }
         }
     }
-
+    
     fileprivate func makeDirections() {
-            self.mapView.clear()
-            let origin: String = "\(originLatitude),\(originLongtitude)"
-            let destination: String = "\(destinationLatitude),\(destinationLongtitude)"
-            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: destinationLatitude, longitude: destinationLongtitude))
-            marker.icon = UIImage(named:"iconCustomer-20.png")
-            marker.map = self.mapView
-            let marker1 = GMSMarker(position: CLLocationCoordinate2D(latitude: originLatitude, longitude: originLongtitude))
-            marker1.icon = UIImage(named:"bike-20.png")
-            marker1.map = self.mapView
-            self.directionService.getDirections(origin: origin,
-                                                destination: destination,
-                                                travelMode: travelMode) { [weak self] (success) in
-                                                    if success {
-                                                        DispatchQueue.main.async {
-                                                            self?.drawRoute()
-                                                            if let totalDistance = self?.directionService.totalDistance,
-                                                                let totalDuration = self?.directionService.totalDuration {
-                                                                self?.directionsDetail.text = totalDistance + ". " + totalDuration
-                                                                if self?.checkClick == 1{
-                                                                    self?.checkClick = 0
-                                                                    let str = self?.directionsDetail.text
-                                                                    self?.directionsDetail.text = str! + ""
-                                                                }
-                                                                self?.directionsDetail.isHidden = false
+        self.mapView.clear()
+        let origin: String = "\(originLatitude),\(originLongtitude)"
+        let destination: String = "\(destinationLatitude),\(destinationLongtitude)"
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: destinationLatitude, longitude: destinationLongtitude))
+        marker.icon = UIImage(named:"")
+        marker.map = self.mapView
+        let marker1 = GMSMarker(position: CLLocationCoordinate2D(latitude: originLatitude, longitude: originLongtitude))
+        marker1.icon = UIImage(named:"")
+        marker1.map = self.mapView
+        self.directionService.getDirections(origin: origin,
+                                            destination: destination,
+                                            travelMode: travelMode) { [weak self] (success) in
+                                                if success {
+                                                    DispatchQueue.main.async {
+                                                        self?.drawRoute()
+                                                        if let totalDistance = self?.directionService.totalDistance,
+                                                            let totalDuration = self?.directionService.totalDuration {
+                                                            self?.directionsDetail.text = totalDistance + ". " + totalDuration
+                                                            if self?.checkClick == 1{
+                                                                self?.checkClick = 0
+                                                                let str = self?.directionsDetail.text
+                                                                self?.directionsDetail.text = str! + ""
                                                             }
+                                                            self?.directionsDetail.isHidden = false
                                                         }
-                                                    } else {
-                                                        print("Directions error")
                                                     }
-            }
+                                                } else {
+                                                    print("Directions error")
+                                                }
         }
-
+    }
+    
     fileprivate func drawRoute() {
         for step in self.directionService.selectSteps {
             if step.polyline.points != "" {
@@ -199,7 +205,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
             }
         }
     }
-
+    
     // MARK: - Transit Modes Buttons
     @IBAction func bicycling(_ sender: Any) {
         self.travelMode = TravelModes.bicycling
@@ -224,43 +230,49 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         self.directionService.totalDurationInSeconds = 0
         self.directionService.selectLegs.removeAll()
         self.directionService.selectSteps.removeAll()
-
+        
     }
     
-    // MARK: - StreetView Properties
+    @IBAction func searchTransition(sender: AnyObject) {
+        let searchViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchDrawerVC")
+        self.pulleyViewController?.setPrimaryContentViewController(controller: searchViewVC, animated: true)
+    }
+    
+    // MARK: - StreetView Function
     func loadStreetView() {
+        checkLocationServicePermission()
         let panoView = GMSPanoramaView(frame: .zero)
         self.view = panoView
         
         panoView.moveNearCoordinate(coordinate!) //Move toward places coordinate
         panoView.animate(to: GMSPanoramaCamera(heading: 90, pitch: 0, zoom: 1), animationDuration: 2)
     }
-
-    @IBAction func searchTransition(sender: AnyObject) {
-        let searchViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchDrawerVC")
-        self.pulleyViewController?.setPrimaryContentViewController(controller: searchViewVC, animated: true)
-    }
     
     // MARK: - Turn by Turn Button Action
     @IBAction func turnByTurnBtnPressed(_ sender: UIButton) {
+        checkLocationServicePermission()
         
     }
     
     // MARK: - Street View Button Action
     @IBAction func streetViewBtnPressed(_ sender: UIButton) {
+        checkLocationServicePermission()
         loadStreetView()
     }
     
     // MARK: - Get User Location Button Action
     @IBAction func getLocationBtnPressed(_ sender: UIButton) {
-        getAddress(address: (currentRecommendedPlace?.address)!)
-        makeDirections()
+        checkLocationServicePermission()
+        let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
+        let getUserLocation = "\(locValue.latitude) \(locValue.longitude)"
+        getAddress(address: getUserLocation)
     }
     
     // MARK: - STL Location Button Action
     @IBAction func startSTLLocationRequestBtnPressed(_ sender: UIButton) {
         checkLocationServicePermission()
-        // locationRequestController.addPlace(latitude: 51.960665, longitude: 7.626135)
+        // let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
+        // locationRequestController.addPlace(latitude: "\(locValue.latitude)", longitude: "\(locValue.longitude)")
     }
     
     // MARK: - Fade Animation Transition
@@ -271,43 +283,49 @@ class MapVC: UIViewController, GMSMapViewDelegate {
             self.temperatureLabel.alpha = 0.0
         }).startAnimation()
     }
-
-// MARK: - STL Request Functions
+    
+    // MARK: - STL Request Functions
     func presentLocationRequestController() {
         
-//        // Initialize STLocationRequestController with Configuration
-//        let locationRequestController = STLocationRequestController { config in
-//            // Perform configuration
-//            config.title.text = "We need your location for some cool flyover features"
-//            config.allowButton.title = "Cool"
-//            config.notNowButton.title = "Not now"
-//            config.mapView.alpha = 0.9
-//            config.backgroundColor = UIColor.lightGray
-//            config.authorizeType = .requestWhenInUseAuthorization
-//        }
-//        
-//        // Listen on STLocationRequestController.Event's
-//        locationRequestController.onEvent = self.onEvent
-//        
-//        // Present STLocationRequestController
-//        locationRequestController.present(onViewController: self)
+        //        // Initialize STLocationRequestController with Configuration
+        //        let locationRequestController = STLocationRequestController { config in
+        //            // Perform configuration
+        //            config.title.text = "We need your location for some cool flyover features"
+        //            config.allowButton.title = "Cool"
+        //            config.notNowButton.title = "Not now"
+        //            config.mapView.alpha = 0.9
+        //            config.backgroundColor = UIColor.lightGray
+        //            config.authorizeType = .requestWhenInUseAuthorization
+        //        }
+        //
+        //        // Listen on STLocationRequestController.Event's
+        //        locationRequestController.onEvent = self.onEvent
+        //
+        //        // Present STLocationRequestController
+        //        locationRequestController.present(onViewController: self)
         
     }
-
-func checkLocationServicePermission() {
-    if CLLocationManager.locationServicesEnabled() {
-        if CLLocationManager.authorizationStatus() == .denied {
-            // Location Services are denied
-        } else {
-            if CLLocationManager.authorizationStatus() == .notDetermined{
-                // Present the STLocationRequestController
-                presentLocationRequestController()
+    
+    func checkLocationServicePermission() {
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .denied {
+                // Location Services are denied
+                locationManager.stopUpdatingLocation()
+                Alert.presentLocationAlert(delegate: self, message: "Location Access Denied - Please go to settings and enable location services")
             } else {
-                // The user has already allowed your app to use location services. Start updating location
+                if CLLocationManager.authorizationStatus() == .notDetermined{
+                    // Present the STLocationRequestController
+                    presentLocationRequestController()
+                    Alert.presentLocationAlert(delegate: self, message: "Location Access Not Determined - Please check your location settings")
+                } else {
+                    // The user has already allowed your app to use location services. Start updating location
+                    locationManager.startUpdatingLocation()
+                }
             }
-        }
-    } else {
-        // Location Services are disabled
+        } else {
+            // Location Services are disabled
+            locationManager.stopUpdatingLocation()
+            Alert.presentLocationAlert(delegate: self, message: "Location Services Disabled - Please go to settiings and enable location services")
         }
     }
 }
@@ -317,7 +335,7 @@ extension MapVC: GMSPanoramaViewDelegate {
     
     func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
         print(error.localizedDescription)
-        }
+    }
 }
 
 // MARK: - Pulley Drawer
@@ -356,9 +374,9 @@ extension MapVC: PulleyPrimaryContentControllerDelegate {
 //            print("The user accepted the use of location services")
 //            self.locationManager.startUpdatingLocation()
 //        case .locationRequestDenied:
-//            print("The user denied the use of location services")
+//            Alert.presentLocationAlert(delegate: self, message: "Location Access Denied - Please go to settings and enable location services")
 //        case .notNowButtonTapped:
-//            print("The Not now button was tapped")
+//            Alert.presentLocationAlert(delegate: self, message: "Location Access: Not Now Selected - Please go to settings and enable location services")
 //        case .didPresented:
 //            print("STLocationRequestController did presented")
 //        case .didDisappear:
@@ -372,6 +390,7 @@ extension MapVC: CLLocationManagerDelegate {
     
     // CLLocationManagerDelegate DidFailWithError Methods
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        Alert.presentLocationAlert(delegate: self, message: "Location Error - No Location Found")
         print("Error. The Location couldn't be found. \(error)")
     }
     

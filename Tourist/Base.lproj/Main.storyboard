@@ -170,16 +170,13 @@
                         <outlet property="headerView" destination="7F5-2N-xs0" id="QmE-Wy-ZrQ"/>
                         <outlet property="mainTableView" destination="eld-dL-Jvg" id="FvN-EZ-na7"/>
                         <outlet property="mapBtn" destination="Lb2-SZ-9QX" id="gS4-F7-8v0"/>
-                        <outlet property="menuCurveImageView" destination="RIf-Zf-rYE" id="dxz-nF-hCr"/>
-                        <outlet property="menuView" destination="IQF-Wm-Tfp" id="Lsj-s6-uPf"/>
-                        <outlet property="menuViewLeadingConstraint" destination="GWm-Az-CKb" id="l9A-Gw-nWr"/>
                         <outlet property="profileBtn" destination="Spk-3f-c5d" id="py3-6h-E4o"/>
                         <outlet property="searchBtn" destination="Wm0-8R-j37" id="XP3-Cs-tst"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65U-Eg-Mz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2385" y="291"/>
+            <point key="canvasLocation" x="3071" y="292"/>
         </scene>
         <!--Cards ContentVC-->
         <scene sceneID="HCg-7k-C0w">
@@ -292,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybj-ey-2i7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3204" y="292"/>
+            <point key="canvasLocation" x="3852" y="291"/>
         </scene>
         <!--Search DrawerVC-->
         <scene sceneID="vbP-5C-Hsp">
@@ -454,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qri-fZ-G5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="1049"/>
+            <point key="canvasLocation" x="2332" y="292"/>
         </scene>
         <!--Maps ContainerVC-->
         <scene sceneID="tne-QT-ifu">
@@ -642,7 +639,7 @@
                                         <color key="tintColor" red="0.59999999999999998" green="0.84705882349999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92941176470588238" green="0.91764705882352937" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="F9Q-cS-yoH"/>
                                     <constraint firstItem="hGx-lx-guW" firstAttribute="top" secondItem="lRG-3c-TOM" secondAttribute="top" constant="10" id="HT1-lA-Vg3"/>
@@ -652,7 +649,7 @@
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="78°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-A6-Igb">
                                 <rect key="frame" x="325" y="300.5" width="42" height="25"/>
-                                <color key="backgroundColor" red="0.92941176470588238" green="0.91764705882352937" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="9nw-02-CII"/>
                                     <constraint firstAttribute="width" constant="42" id="NYb-me-qCo"/>
