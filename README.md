@@ -24,7 +24,7 @@ currently revamping for directions to/from recommended places:
 - [x] Google Turn by Turn Directions
 - [x] Include [STLLocationRequest](https://github.com/SvenTiigi/STLocationRequest "STLLocationRequest")
 - [x] StreetView button
-- [x] Update to Swift 4 (manually updated ObjectMapper due to GooglePlacesAPI: is Swift 4 version)
+- [x] Update to Swift 4
 - [ ] Extra page with in-depth information for each place
 - [ ] Include [ARKit-CoreLocation](https://github.com/ProjectDent/ARKit-CoreLocation "ARKit-CoreLocation")
 - [ ] Eventually implement [Expanding Collection](https://github.com/Ramotion/expanding-collection "Expanding-Collection")
