@@ -41,6 +41,9 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     weak var locationManagerDelegate: LocationManagerDelegate?
     let locationManager = CLLocationManager()
     
+    let addressQueue = DispatchQueue(label: "address-queue")
+    let directionsQueue = DispatchQueue(label: "directions-queue")
+    
     // Favorite Places properties
     var currentRecommendedPlace: RecommendedPlaces?
     var coordinate: CLLocationCoordinate2D?
@@ -64,14 +67,14 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         temperatureLabel.layer.cornerRadius = 7.0
         
         mapView.delegate = self
-        self.view.bringSubview(toFront: controlsContainer)
-        self.view.bringSubview(toFront: temperatureLabel)
+        self.view.bringSubviewToFront(controlsContainer)
+        self.view.bringSubviewToFront(temperatureLabel)
         
         // MARK: - CoreLocation/User Location
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest // location updates
-        self.locationManager.distanceFilter = kCLDistanceFilterNone //accuray of location/updates
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
@@ -97,6 +100,9 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         
         // Pulley layout for iPhone/iPad
         self.pulleyViewController?.displayMode = .automatic
+        
+        // Remove navi bar from all screens
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: - Status Bar Animation Functions
@@ -209,19 +215,25 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     // MARK: - Transit Modes Buttons
     @IBAction func bicycling(_ sender: Any) {
         self.travelMode = TravelModes.bicycling
-        self.makeDirections()
+        directionsQueue.async {
+            self.makeDirections()
+        }
         self.afterDirection()
     }
     
     @IBAction func driving(_ sender: Any) {
         self.travelMode = TravelModes.driving
-        self.makeDirections()
+        directionsQueue.async {
+            self.makeDirections()
+        }
         self.afterDirection()
     }
     
     @IBAction func transit(_ sender: Any) {
         self.travelMode = TravelModes.transit
-        self.makeDirections()
+        directionsQueue.async {
+            self.makeDirections()
+        }
         self.afterDirection()
     }
     
@@ -265,7 +277,10 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         checkLocationServicePermission()
         let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
         let getUserLocation = "\(locValue.latitude) \(locValue.longitude)"
-        getAddress(address: getUserLocation)
+        
+        addressQueue.async {
+            self.getAddress(address: getUserLocation)
+        }
     }
     
     // MARK: - STL Location Button Action
@@ -396,11 +411,15 @@ extension MapVC: CLLocationManagerDelegate {
     
     // CLLocationManagerDelegate didUpdateLocations Methods
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
-        print("didUpdateLocations UserLocation: \(String(describing: locations.last))")
+        let location = locations[locations.count - 1] // last location locations.last
+        if location.horizontalAccuracy < 0 { // stop updating location once get valid result
+            print("didUpdateLocations UserLocation: \(String(describing: locations.last))") // location.coordinate.latitude/longitude
+            self.locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil // get location data once
+        }
     }
-    
 }
+
 
 
 

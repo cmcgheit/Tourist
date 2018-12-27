@@ -188,7 +188,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpT-9y-0ne">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12J-ak-VjH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <items>
+                                            <navigationItem id="cOR-pJ-9yl">
+                                                <barButtonItem key="leftBarButtonItem" image="backnolinearrow" id="67g-bn-EsP">
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="12J-ak-VjH" firstAttribute="top" secondItem="YpT-9y-0ne" secondAttribute="top" id="Vsu-2E-h5Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="12J-ak-VjH" secondAttribute="trailing" id="ZnW-I1-nYY"/>
+                                    <constraint firstItem="12J-ak-VjH" firstAttribute="leading" secondItem="YpT-9y-0ne" secondAttribute="leading" id="fHi-Nr-dF5"/>
+                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OWN-Oh-9ru">
                                 <rect key="frame" x="15" y="45" width="345" height="597"/>
@@ -537,10 +554,10 @@
             </objects>
             <point key="canvasLocation" x="-692" y="291.90404797601201"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CustomNC-->
         <scene sceneID="OQo-OA-JXB">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T3e-xl-u3r" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T3e-xl-u3r" customClass="CustomNC" customModule="Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6cJ-jn-qse">
                         <autoresizingMask key="autoresizingMask"/>
@@ -691,6 +708,7 @@
     </scenes>
     <resources>
         <image name="MenuCurve" width="126" height="736"/>
+        <image name="backnolinearrow" width="25" height="25"/>
         <image name="directions1" width="277" height="272"/>
         <image name="directionssign" width="250" height="277"/>
         <image name="greymapicon" width="46" height="57"/>

@@ -12,21 +12,53 @@ class RecommendedPlacesVC: UIViewController {
     @IBOutlet weak var mapBtn: UIButton!
     @IBOutlet weak var searchBtn: UIButton!
     
+    var isStatusBarHidden = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bringDownBackButton()
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Remove navi bar from all screens
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    
     }
     
     // override func viewDidDisappear(_ animated: Bool) {
     // super.viewDidDisappear(animated)
     // Show navi bar on all pages but MainVC
     // navigationController?.setNavigationBarHidden(false, animated: true)
+    
+    func bringDownBackButton() {
+        navigationController?.navigationBar.layer.frame.origin.y = 22
+    }
+    
+    // MARK: - Status Bar Animation Functions
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
+    func hideStatusBar() {
+        isStatusBarHidden = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
+    
+    func showStatusBar() {
+        isStatusBarHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
     
 }
 

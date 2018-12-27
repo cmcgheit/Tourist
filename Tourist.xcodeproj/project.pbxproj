@@ -40,6 +40,7 @@
 		6A986C1E20E04D4D00B7FF92 /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */; };
 		6AA32ACC213DD1410091CBC3 /* CustomMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA32ACB213DD1410091CBC3 /* CustomMask.swift */; };
 		6AA32ACE213F384D0091CBC3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA32ACD213F384D0091CBC3 /* Alert.swift */; };
+		6AA32AD0213F7DF40091CBC3 /* CustomNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA32ACF213F7DF40091CBC3 /* CustomNC.swift */; };
 		7B5B620ACF5728836AD7141A /* Pods_Tourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6044F44E1A5E07229CBF9F43 /* Pods_Tourist.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		6AA32ACB213DD1410091CBC3 /* CustomMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMask.swift; sourceTree = "<group>"; };
 		6AA32ACD213F384D0091CBC3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		6AA32ACF213F7DF40091CBC3 /* CustomNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNC.swift; sourceTree = "<group>"; };
 		C6C0B9D9FCD9DF511383F102 /* Pods-Tourist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tourist/Pods-Tourist.debug.xcconfig"; sourceTree = "<group>"; };
 		E9815A4547B22B376AB9804C /* Pods-Tourist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tourist/Pods-Tourist.release.xcconfig"; sourceTree = "<group>"; };
 		F11C317B4F96CC728CFF511B /* Pods_Favorite_Places.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Favorite_Places.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				6A77A68B2007146900C1838A /* CardsContentVC.swift */,
 				6A77E5BE213AFBBC00C66179 /* SearchDrawerVC.swift */,
 				6A77E5BC213AFB3800C66179 /* SearchViewVC.swift */,
+				6AA32ACF213F7DF40091CBC3 /* CustomNC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -250,7 +253,7 @@
 					6A8A76A31FC14AFB00D580D7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 48HD6AZC2E;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -368,6 +371,7 @@
 				6A77A6942007C1D200C1838A /* Bounds.swift in Sources */,
 				6A77A69F2007C3A900C1838A /* GoogleMapValue.swift in Sources */,
 				6A77A681200571A900C1838A /* Coordinate.swift in Sources */,
+				6AA32AD0213F7DF40091CBC3 /* CustomNC.swift in Sources */,
 				6A77A68E2007171200C1838A /* RecommendePlacesPhotoCell.swift in Sources */,
 				6A77A69A2007C24D00C1838A /* Step.swift in Sources */,
 				6A77A67D200570A400C1838A /* Extensions.swift in Sources */,
@@ -538,8 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.famdesign.Tourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -553,8 +556,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.famdesign.Tourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
