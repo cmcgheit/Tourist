@@ -4,7 +4,7 @@ App that shows/recommends places in a user's location to visit. App features inc
 
 currently revamping for directions to/from recommended places:
 
-![Tourist Revamp](/Resources/TouristRevamp.png)
+<img src="/Resources/TouristRevamp.png" width="400" height="700" />
 
 **Navigate to the next Tourist recommendation via the next button in the navigation bar**
 
