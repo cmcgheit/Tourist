@@ -13,7 +13,7 @@ enum TravelModes: String {
 
 class DirectionService: NSObject, CLLocationManagerDelegate {
     
-    let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
+    let baseURLDirections = Constants.URLDirections.baseURL
     var direction: PlaceDirection?
     var originCoordinate: CLLocationCoordinate2D?
     var destinationCoordinate: CLLocationCoordinate2D?
@@ -48,7 +48,7 @@ class DirectionService: NSObject, CLLocationManagerDelegate {
         }
         var directionsURLString = baseURLDirections + "origin=" +
             originAddress + "&destination=" + destinationAddress
-        directionsURLString += "&mode=" + travelMode.rawValue + "&key=" + Google_MapsKey
+        directionsURLString += "&mode=" + travelMode.rawValue + "&key=" + Constants.Google_Maps.apiKey
         self.parseJsonGoogleMap(directionsURLString: directionsURLString)
         { (success) in
             if success {

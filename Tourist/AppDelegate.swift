@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // MARK: Google Keys
-        GMSServices.provideAPIKey(Google_MapsKey)
-        GMSPlacesClient.provideAPIKey(Google_MapsKey)
+        GMSServices.provideAPIKey(Constants.Google_Maps.apiKey)
+        GMSPlacesClient.provideAPIKey(Constants.Google_Maps.apiKey)
         return true
     }
 

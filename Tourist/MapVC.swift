@@ -4,7 +4,6 @@
 //
 //  Created by C McGhee on 4/3/17.
 //  Copyright © 2017 C McGhee. All rights reserved.
-//
 
 import UIKit
 import CoreLocation
@@ -143,7 +142,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     // MARK: - Get Users Location Function (Turn Location into Address)
     func getAddress(address:String){
         
-        let key: String = Google_MapsKey
+        let key: String = Constants.Google_Maps.apiKey
         let postParameters: [String: Any] = [ "address": address,"key":key]
         let url: String = "https://maps.googleapis.com/maps/api/geocode/json"
         
