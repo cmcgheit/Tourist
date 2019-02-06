@@ -1,6 +1,5 @@
 //SearchDrawerVC.swift, coded with love by C McGhee
 
-import Foundation
 import UIKit
 import GoogleMaps
 import GooglePlaces

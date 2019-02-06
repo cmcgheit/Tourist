@@ -5,7 +5,6 @@
 //  Copyright © 2017 akhil. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CustomMarkerView: UIView {

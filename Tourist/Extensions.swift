@@ -1,6 +1,5 @@
 //Extensions.swift, created with love by C McGhee
 
-import Foundation
 import UIKit
 import CoreLocation
 
