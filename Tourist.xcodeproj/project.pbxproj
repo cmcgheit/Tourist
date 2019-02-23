@@ -117,31 +117,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		6A77A6842005823200C1838A /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				6A77A6822005822C00C1838A /* DirectionService.swift */,
-			);
-			name = Services;
-			sourceTree = "<group>";
-		};
-		6A77A69D2007C38100C1838A /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				6A77A69B2007C27A00C1838A /* Location.swift */,
-				6A77A6952007C1FC00C1838A /* Route.swift */,
-				6A77A6932007C1D200C1838A /* Bounds.swift */,
-				6A77A6912007C1A800C1838A /* GeocodedWaypoint.swift */,
-				6A77A68F2007C17700C1838A /* PlaceDirection.swift */,
-				6A77A6992007C24D00C1838A /* Step.swift */,
-				6A77A680200571A900C1838A /* Coordinate.swift */,
-				6A77A6972007C22400C1838A /* Leg.swift */,
-				6A77A69E2007C3A900C1838A /* GoogleMapValue.swift */,
-				6A77A6A02007C3DF00C1838A /* Polyline.swift */,
-			);
-			name = Map;
-			sourceTree = "<group>";
-		};
 		6A8A769B1FC14AFB00D580D7 = {
 			isa = PBXGroup;
 			children = (
@@ -163,10 +138,10 @@
 		6A8A76A61FC14AFB00D580D7 /* Tourist */ = {
 			isa = PBXGroup;
 			children = (
-				6A8A76BB1FC14C5D00D580D7 /* Model */,
-				6A8A76BA1FC14C5300D580D7 /* View */,
-				6A8A76B91FC14C3B00D580D7 /* Controller */,
-				6A77A6842005823200C1838A /* Services */,
+				6AFAF0712220DE0200DCAF28 /* Model */,
+				6AFAF0732220DE8200DCAF28 /* View */,
+				6AFAF0742220DEB200DCAF28 /* Controller */,
+				6AFAF0752220DEE100DCAF28 /* Services */,
 				6A8A76A71FC14AFB00D580D7 /* AppDelegate.swift */,
 				6A8A76AB1FC14AFC00D580D7 /* Main.storyboard */,
 				6A8A76AE1FC14AFC00D580D7 /* Assets.xcassets */,
@@ -176,45 +151,71 @@
 			path = Tourist;
 			sourceTree = "<group>";
 		};
-		6A8A76B91FC14C3B00D580D7 /* Controller */ = {
+		6AFAF0712220DE0200DCAF28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6A77E5B8213AEAAC00C66179 /* AnimationSplashVC.swift */,
-				6A77E5C6213B8B6D00C66179 /* MapsContainerVC.swift */,
-				6A8A76A91FC14AFB00D580D7 /* MapVC.swift */,
-				6A77A68520067A9C00C1838A /* RecommendedPlacesVC.swift */,
-				6A77A68B2007146900C1838A /* CardsContentVC.swift */,
-				6A77E5BE213AFBBC00C66179 /* SearchDrawerVC.swift */,
-				6A77E5BC213AFB3800C66179 /* SearchViewVC.swift */,
-				6AA32ACF213F7DF40091CBC3 /* CustomNC.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		6A8A76BA1FC14C5300D580D7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */,
-				6A77A68D2007171200C1838A /* RecommendePlacesPhotoCell.swift */,
-				6A77E5BA213AF65C00C66179 /* PlacesPhotoCell.swift */,
-				6A77E5C0213B036D00C66179 /* SearchCell.swift */,
-				6AA32ACB213DD1410091CBC3 /* CustomMask.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		6A8A76BB1FC14C5D00D580D7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6A8A76BC1FC14F1600D580D7 /* RecommendedPlaces.swift */,
-				6A8A76BE1FC1508400D580D7 /* Constants.swift */,
-				6A77A67C200570A400C1838A /* Extensions.swift */,
-				6A77A67E2005712500C1838A /* LocationManager.swift */,
-				6A77E5C2213B1C1500C66179 /* UIView+Borders.swift */,
+				6AFAF0722220DE3900DCAF28 /* Map */,
 				6AA32ACD213F384D0091CBC3 /* Alert.swift */,
-				6A77A69D2007C38100C1838A /* Map */,
+				6A77E5C2213B1C1500C66179 /* UIView+Borders.swift */,
+				6A77A67E2005712500C1838A /* LocationManager.swift */,
+				6A77A67C200570A400C1838A /* Extensions.swift */,
+				6A8A76BE1FC1508400D580D7 /* Constants.swift */,
+				6A8A76BC1FC14F1600D580D7 /* RecommendedPlaces.swift */,
 			);
-			name = Model;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6AFAF0722220DE3900DCAF28 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6A77A6A02007C3DF00C1838A /* Polyline.swift */,
+				6A77A69E2007C3A900C1838A /* GoogleMapValue.swift */,
+				6A77A6972007C22400C1838A /* Leg.swift */,
+				6A77A680200571A900C1838A /* Coordinate.swift */,
+				6A77A6992007C24D00C1838A /* Step.swift */,
+				6A77A68F2007C17700C1838A /* PlaceDirection.swift */,
+				6A77A6912007C1A800C1838A /* GeocodedWaypoint.swift */,
+				6A77A6932007C1D200C1838A /* Bounds.swift */,
+				6A77A6952007C1FC00C1838A /* Route.swift */,
+				6A77A69B2007C27A00C1838A /* Location.swift */,
+			);
+			name = Map;
+			path = Tourist/Map;
+			sourceTree = SOURCE_ROOT;
+		};
+		6AFAF0732220DE8200DCAF28 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6AA32ACB213DD1410091CBC3 /* CustomMask.swift */,
+				6A77E5C0213B036D00C66179 /* SearchCell.swift */,
+				6A77E5BA213AF65C00C66179 /* PlacesPhotoCell.swift */,
+				6A77A68D2007171200C1838A /* RecommendePlacesPhotoCell.swift */,
+				6A986C1D20E04D4D00B7FF92 /* CustomMarkerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6AFAF0742220DEB200DCAF28 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A77A68B2007146900C1838A /* CardsContentVC.swift */,
+				6AA32ACF213F7DF40091CBC3 /* CustomNC.swift */,
+				6A77E5BC213AFB3800C66179 /* SearchViewVC.swift */,
+				6A77E5BE213AFBBC00C66179 /* SearchDrawerVC.swift */,
+				6A77A68520067A9C00C1838A /* RecommendedPlacesVC.swift */,
+				6A8A76A91FC14AFB00D580D7 /* MapVC.swift */,
+				6A77E5C6213B8B6D00C66179 /* MapsContainerVC.swift */,
+				6A77E5B8213AEAAC00C66179 /* AnimationSplashVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6AFAF0752220DEE100DCAF28 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6A77A6822005822C00C1838A /* DirectionService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
